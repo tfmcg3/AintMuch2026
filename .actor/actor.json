@@ -1,0 +1,47 @@
+{
+  "actorSpecification": 1,
+  "name": "dutchie-menu-scraper",
+  "title": "Dutchie Dispensary Menu Scraper",
+  "description": "High-speed API-based scraper that extracts dispensary product menus from Dutchie.com using their internal GraphQL API. Zero browser automation, near-zero compute costs.",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "dockerfile": "../Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Dispensary Products",
+      "views": {
+        "products": {
+          "title": "All Products",
+          "transformation": {
+            "fields": [
+              "dispensary_name",
+              "product_id",
+              "name",
+              "brand",
+              "category",
+              "subcategory",
+              "strain_type",
+              "prices",
+              "thc",
+              "cbd",
+              "is_sold_out",
+              "scraped_at"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "name": { "label": "Product", "format": "text" },
+              "brand": { "label": "Brand", "format": "text" },
+              "category": { "label": "Category", "format": "text" },
+              "thc": { "label": "THC", "format": "text" },
+              "cbd": { "label": "CBD", "format": "text" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
