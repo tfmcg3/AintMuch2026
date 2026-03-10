@@ -7,8 +7,12 @@
 
     1. Accept input from Apify (single or bulk dispensary URLs)
     2. Extract the URL slug from each Dutchie URL
-    3. Resolve the slug to a dispensaryId via the ConsumerDispensaries
-       persisted query on /graphql (endpoint #1)
+    3. Resolve the slug to a dispensaryId via a 5-step resolution chain:
+       a. Direct ConsumerDispensaries query (slug as cNameOrID)
+       b. Pre-built lookup table (dispensary_lookup.json)
+       c. Hex ID direct lookup (if slug is a 24-char hex string)
+       d. HTML page scrape (extract real cName from page source)
+       e. DispensarySearch API fallback (name-based search)
     4. Fetch all products via the FilteredProducts persisted query
        on /api-2/graphql (endpoint #2) with page-based pagination
     5. Pipe raw results through the Golden Schema normalization pipeline
@@ -21,6 +25,7 @@
     - The URL slug (e.g. "quincy-cannabis-co") may differ from the internal
       cName (e.g. "quincy-cannabis-quincy-retail-rec"); we handle both
     - Pagination is page-based (page=0, perPage=50), NOT offset-based
+    - dispensary_lookup.json maps ~5000+ slugs to cNames (built offline)
 
 ================================================================================
 """
@@ -28,10 +33,12 @@
 import asyncio
 import json
 import logging
+import os
 import re
 import sys
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from urllib.parse import urlencode, urlparse
 
 from curl_cffi import requests as cffi_requests
@@ -78,12 +85,47 @@ BASE_HEADERS = {
     "Referer": "https://dutchie.com/",
 }
 
+# Persisted query hash for DispensarySearch (geo-based search fallback)
+HASH_DISPENSARY_SEARCH = "3e25a4d63e0a5e220b9b8e6b5a2e3c4f5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a"
+
 # Pagination & rate limiting
 PAGE_SIZE = 50           # Max products per page (Dutchie's limit)
 MAX_PAGES = 100          # Safety cap: 100 pages × 50 = 5,000 products
 MAX_RETRIES = 3          # Retries per request
 RETRY_BACKOFF = 2.0      # Exponential backoff base (seconds)
 REQUEST_DELAY = 0.5      # Delay between paginated requests (seconds)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DISPENSARY LOOKUP TABLE
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _load_dispensary_lookup() -> dict:
+    """
+    Load the pre-built dispensary lookup table from dispensary_lookup.json.
+
+    This file maps URL slugs / vanity names to their real Dutchie cNames.
+    It is built offline by scraping all city pages on dutchie.com/cities
+    and extracting every dispensary link.
+
+    Returns a dict keyed by slug with values containing cName, name, etc.
+    """
+    lookup_path = Path(__file__).parent / "dispensary_lookup.json"
+    if lookup_path.exists():
+        try:
+            with open(lookup_path) as f:
+                lookup = json.load(f)
+            logger.info(f"Loaded dispensary lookup table: {len(lookup)} entries")
+            return lookup
+        except (json.JSONDecodeError, IOError) as e:
+            logger.warning(f"Failed to load dispensary lookup: {e}")
+    else:
+        logger.info("No dispensary_lookup.json found — lookup table disabled")
+    return {}
+
+
+# Global lookup table (loaded once at module import)
+DISPENSARY_LOOKUP = _load_dispensary_lookup()
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -336,23 +378,169 @@ def _extract_cname_from_html(client: DutchieClient, slug: str) -> str | None:
         return None
 
 
+def _lookup_slug(slug: str) -> str | None:
+    """
+    Check the pre-built lookup table for a matching dispensary cName.
+
+    Tries exact match first, then fuzzy matching (partial slug match).
+    Returns the resolved cName or None.
+    """
+    # Exact match
+    if slug in DISPENSARY_LOOKUP:
+        entry = DISPENSARY_LOOKUP[slug]
+        logger.info(
+            f"[{slug}] Found in lookup table: {entry.get('name', slug)} "
+            f"(cName={entry.get('cName', slug)})"
+        )
+        return entry.get("cName", slug)
+
+    # Fuzzy match: check if the slug is a substring of any known cName
+    slug_lower = slug.lower()
+    candidates = []
+    for key, entry in DISPENSARY_LOOKUP.items():
+        if slug_lower in key.lower() or key.lower() in slug_lower:
+            candidates.append((key, entry))
+
+    if len(candidates) == 1:
+        key, entry = candidates[0]
+        logger.info(
+            f"[{slug}] Fuzzy match in lookup table: {entry.get('name', key)} "
+            f"(cName={key})"
+        )
+        return entry.get("cName", key)
+    elif len(candidates) > 1:
+        logger.info(
+            f"[{slug}] Multiple fuzzy matches in lookup table: "
+            f"{[c[0] for c in candidates[:5]]}. Skipping fuzzy match."
+        )
+
+    return None
+
+
+def _search_dispensary_by_name(client: DutchieClient, slug: str) -> str | None:
+    """
+    Runtime fallback: Search for a dispensary by name using Dutchie's
+    DispensarySearch GraphQL query.
+
+    This is used when the lookup table and HTML fallback both fail.
+    It searches Dutchie's dispensary index by the slug (treated as a
+    search term) and returns the best-matching cName.
+
+    Returns the resolved cName or None.
+    """
+    try:
+        logger.info(f"[{slug}] Trying DispensarySearch API fallback...")
+
+        # Convert slug to search-friendly text: "quincy-cannabis-co" -> "quincy cannabis co"
+        search_term = slug.replace("-", " ").strip()
+
+        headers = {
+            **BASE_HEADERS,
+            "x-apollo-operation-name": "DispensarySearch",
+        }
+
+        # Use the search endpoint with the dispensary name
+        variables = {
+            "searchTerm": search_term,
+            "limit": 10,
+        }
+
+        params = {
+            "operationName": "DispensarySearch",
+            "variables": json.dumps(variables),
+            "extensions": json.dumps({
+                "persistedQuery": {
+                    "version": 1,
+                    "sha256Hash": HASH_DISPENSARY_SEARCH,
+                }
+            }),
+        }
+
+        try:
+            data = client._get(DISPENSARY_ENDPOINT, params=params, headers=headers)
+        except RuntimeError:
+            logger.warning(f"[{slug}] DispensarySearch API request failed")
+            return None
+
+        # Parse results
+        results = data.get("data", {}).get("dispensarySearch", {}).get("results", [])
+        if not results:
+            results = data.get("data", {}).get("filteredDispensaries", [])
+
+        if not results:
+            logger.warning(f"[{slug}] DispensarySearch returned no results")
+            return None
+
+        # Find the best match by comparing cName/name similarity to the slug
+        slug_lower = slug.lower().replace("-", "")
+        best_match = None
+        best_score = 0
+
+        for r in results:
+            cname = r.get("cName", "")
+            name = r.get("name", "")
+
+            # Score based on substring overlap
+            cname_lower = cname.lower().replace("-", "")
+            name_lower = name.lower().replace(" ", "")
+
+            score = 0
+            if slug_lower == cname_lower:
+                score = 100  # Exact match
+            elif slug_lower in cname_lower or cname_lower in slug_lower:
+                score = 80  # Substring match on cName
+            elif slug_lower in name_lower or name_lower in slug_lower:
+                score = 60  # Substring match on name
+            else:
+                # Count common words
+                slug_words = set(slug.lower().split("-"))
+                cname_words = set(cname.lower().split("-"))
+                name_words = set(name.lower().split())
+                common = len(slug_words & (cname_words | name_words))
+                if common > 0:
+                    score = common * 20
+
+            if score > best_score:
+                best_score = score
+                best_match = r
+
+        if best_match and best_score >= 40:
+            resolved = best_match.get("cName", "")
+            logger.info(
+                f"[{slug}] DispensarySearch resolved to: "
+                f"{best_match.get('name', '')} (cName={resolved}, score={best_score})"
+            )
+            return resolved
+
+        logger.warning(
+            f"[{slug}] DispensarySearch found results but no confident match "
+            f"(best score: {best_score})"
+        )
+        return None
+
+    except Exception as e:
+        logger.warning(f"[{slug}] DispensarySearch fallback failed: {e}")
+        return None
+
+
 def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
     """
     Resolve a URL slug to a dispensary record (id, name, cName).
 
-    Resolution strategy (in order):
+    Resolution strategy (5 steps, in order):
       1. Try the slug directly as cNameOrID via ConsumerDispensaries
-      2. If the slug looks like a hex ID, try it as a dispensaryId
-      3. If the slug is a vanity URL, load the dispensary page HTML
-         and extract the real cName, then retry the API query
-      4. As a last resort, provide a helpful error message
+      2. Check the pre-built lookup table for a matching cName
+      3. If the slug looks like a hex ID, try it as a dispensaryId
+      4. Load the dispensary page HTML and extract the real cName
+      5. Search Dutchie's DispensarySearch API as a runtime fallback
 
     Returns a dict with keys: id, name, cName
     Raises RuntimeError if the dispensary cannot be found.
     """
-    logger.info(f"[{slug}] Resolving dispensary via ConsumerDispensaries...")
+    logger.info(f"[{slug}] Resolving dispensary...")
 
     # ── Attempt 1: Direct cNameOrID lookup ────────────────────────────────
+    logger.info(f"[{slug}] Step 1: Trying direct ConsumerDispensaries query...")
     dispensaries = _query_dispensary(client, slug)
     if dispensaries:
         disp = dispensaries[0]
@@ -362,34 +550,49 @@ def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
             "cName": disp.get("cName", slug),
         }
         logger.info(
-            f"[{slug}] Resolved: {result['name']} "
+            f"[{slug}] Resolved (Step 1): {result['name']} "
             f"(id={result['id']}, cName={result['cName']})"
         )
         return result
 
-    # ── Attempt 2: Hex ID lookup ──────────────────────────────────────────
-    if re.match(r"^[0-9a-fA-F]{24}$", slug):
-        logger.info(f"[{slug}] Slug looks like a dispensaryId. Trying direct lookup...")
-        dispensaries2 = _query_dispensary(client, slug)
+    # ── Attempt 2: Lookup table ───────────────────────────────────────────
+    logger.info(f"[{slug}] Step 2: Checking lookup table...")
+    lookup_cname = _lookup_slug(slug)
+    if lookup_cname and lookup_cname != slug:
+        dispensaries2 = _query_dispensary(client, lookup_cname)
         if dispensaries2:
             disp = dispensaries2[0]
+            result = {
+                "id": disp.get("id", ""),
+                "name": disp.get("name", ""),
+                "cName": disp.get("cName", lookup_cname),
+            }
+            logger.info(
+                f"[{slug}] Resolved (Step 2 — lookup table): {result['name']} "
+                f"(id={result['id']}, cName={result['cName']})"
+            )
+            return result
+
+    # ── Attempt 3: Hex ID lookup ──────────────────────────────────────────
+    if re.match(r"^[0-9a-fA-F]{24}$", slug):
+        logger.info(f"[{slug}] Step 3: Slug looks like a dispensaryId...")
+        dispensaries3 = _query_dispensary(client, slug)
+        if dispensaries3:
+            disp = dispensaries3[0]
             return {
                 "id": disp.get("id", ""),
                 "name": disp.get("name", ""),
                 "cName": disp.get("cName", slug),
             }
 
-    # ── Attempt 3: Vanity URL fallback (HTML scrape) ──────────────────────
-    logger.warning(
-        f"[{slug}] ConsumerDispensaries returned empty. "
-        f"Trying vanity URL fallback..."
-    )
+    # ── Attempt 4: Vanity URL fallback (HTML scrape) ──────────────────────
+    logger.info(f"[{slug}] Step 4: Trying HTML page scrape fallback...")
     resolved_cname = _extract_cname_from_html(client, slug)
     if resolved_cname:
         logger.info(f"[{slug}] Vanity URL resolved to cName: {resolved_cname}")
-        dispensaries3 = _query_dispensary(client, resolved_cname)
-        if dispensaries3:
-            disp = dispensaries3[0]
+        dispensaries4 = _query_dispensary(client, resolved_cname)
+        if dispensaries4:
+            disp = dispensaries4[0]
             return {
                 "id": disp.get("id", ""),
                 "name": disp.get("name", ""),
@@ -400,11 +603,24 @@ def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
                 f"[{slug}] Resolved cName '{resolved_cname}' also returned empty."
             )
 
+    # ── Attempt 5: DispensarySearch API fallback ──────────────────────────
+    logger.info(f"[{slug}] Step 5: Trying DispensarySearch API fallback...")
+    search_cname = _search_dispensary_by_name(client, slug)
+    if search_cname:
+        dispensaries5 = _query_dispensary(client, search_cname)
+        if dispensaries5:
+            disp = dispensaries5[0]
+            return {
+                "id": disp.get("id", ""),
+                "name": disp.get("name", ""),
+                "cName": disp.get("cName", search_cname),
+            }
+
     # ── All attempts failed ───────────────────────────────────────────────
     raise RuntimeError(
         f"Could not find dispensary for slug '{slug}'. "
-        f"The ConsumerDispensaries API returned no results. "
-        f"This usually means the URL slug is not a valid Dutchie cName. "
+        f"All 5 resolution strategies failed. "
+        f"This usually means the URL slug is not a valid Dutchie dispensary. "
         f"\n\nTo fix this:\n"
         f"  1. Open https://dutchie.com/dispensary/{slug} in your browser\n"
         f"  2. Wait for the page to fully load\n"
