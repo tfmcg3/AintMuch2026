@@ -1,8 +1,4 @@
-httpx>=0.25.0
 apify>=1.7.0
+curl_cffi>=0.7.0
 pytest>=7.4.0
 python-dotenv>=1.0.0
-apify
-httpx
-pytest
-python-dotenv
