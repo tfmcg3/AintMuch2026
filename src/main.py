@@ -326,8 +326,9 @@ def _extract_cname_from_html(client: DutchieClient, slug: str) -> str | None:
         html = resp.text
 
         # Strategy 1: Check if the final URL was redirected (server-side)
+        # Dutchie URLs can be /dispensary/slug or /dispensaries/slug
         final_url = str(resp.url)
-        final_match = re.search(r'/dispensary/([^/?#]+)', final_url)
+        final_match = re.search(r'/dispensar(?:y|ies)/([^/?#]+)', final_url)
         if final_match:
             resolved = final_match.group(1)
             if resolved != slug:
@@ -336,7 +337,7 @@ def _extract_cname_from_html(client: DutchieClient, slug: str) -> str | None:
 
         # Strategy 2: Look for canonical link tag
         canonical = re.search(
-            r'<link[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']*/dispensary/([^"\'/]+))',
+            r'<link[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']*/dispensar(?:y|ies)/([^"\'/]+))',
             html, re.I
         )
         if canonical:
