@@ -41,6 +41,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 
+# Ensure the current directory (src/) is in the path for Apify
+# This fixes the ModuleNotFoundError when running as 'python -m src.main'
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 from curl_cffi import requests as cffi_requests
 
 # Apify SDK import — graceful fallback for local testing
@@ -768,6 +774,7 @@ async def _process_input(actor_input: dict):
     mode = actor_input.get("scrapingMode", "single")
     raw_urls = actor_input.get("startUrls", [])
     max_items = actor_input.get("maxItems", 0)
+    category_filter = actor_input.get("categoryFilter", "").strip()
     use_proxy = actor_input.get("useProxy", False)
     proxy_group = actor_input.get("proxyGroup", "RESIDENTIAL")
 
@@ -849,14 +856,28 @@ async def _process_input(actor_input: dict):
                     slug=dispensary_cname,
                     max_items=max_items,
                 )
+                
+                # Apply category filter if specified
+                if category_filter:
+                    logger.info(f"[{slug}] Applying category filter: {category_filter}")
+                    filtered_products = []
+                    cf_lower = category_filter.lower()
+                    for p in raw_products:
+                        # Check multiple possible category fields in Dutchie GraphQL
+                        cat = (p.get("menuType") or p.get("type") or "").lower()
+                        if cf_lower in cat:
+                            filtered_products.append(p)
+                    logger.info(f"[{slug}] Filtered {len(raw_products)} -> {len(filtered_products)} products")
+                    raw_products = filtered_products
+                    
             except Exception as e:
                 logger.error(f"[{slug}] Scraping failed: {e}")
                 continue
 
             if not raw_products:
                 logger.warning(
-                    f"[{slug}] No products returned. "
-                    f"The store may be offline or the URL may be incorrect."
+                    f"[{slug}] No products returned (or filtered out). "
+                    f"The store may be offline, the URL incorrect, or the category filter too restrictive."
                 )
                 continue
 

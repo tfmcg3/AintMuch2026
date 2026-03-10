@@ -457,7 +457,7 @@ def parse_weight(raw) -> Optional[float]:
     if mg_match:
         return round(float(mg_match.group(1)) / 1000, 4)
     # Handle grams
-    g_match = re.match(r"([\d.]+)\s*g(?:ram)?s?", text)
+    g_match = re.search(r"([\d.]+)\s*g(?:ram)?s?", text)
     if g_match:
         return round(float(g_match.group(1)), 4)
     # Handle ounces
