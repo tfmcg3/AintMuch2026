@@ -620,16 +620,36 @@ def extract_raw_fields(raw: dict) -> dict:
                     break
 
     # Weight — try flat weight, then options array, then netWeight
+    # Dutchie often stores the real weight inside 'options' or 'variants'
     weight = raw.get("weight") or raw.get("Weight")
-    if weight is None:
-        options = raw.get("options") or []
-        if isinstance(options, list):
-            for opt in options:
-                if isinstance(opt, dict) and opt.get("weight") is not None:
-                    weight = opt["weight"]
-                    break
+    
+    # Strategy 1: Check options (most common for Dutchie GraphQL)
+    options = raw.get("options") or raw.get("Variants") or raw.get("variants") or []
+    if isinstance(options, list) and options:
+        for opt in options:
+            if not isinstance(opt, dict):
+                continue
+            # Try multiple weight fields within the option
+            opt_weight = (
+                opt.get("weight") 
+                or opt.get("Weight") 
+                or opt.get("netWeight")
+                or opt.get("optionName") # Sometimes '1g', '3.5g' is the option name
+                or opt.get("name")
+            )
+            if opt_weight:
+                weight = opt_weight
+                break
+                
+    # Strategy 2: Check top-level netWeight fallback
     if weight is None:
         weight = raw.get("netWeight") or raw.get("net_weight")
+        
+    # Strategy 3: Check product name for weight hints (e.g. "Blue Dream 3.5g")
+    if weight is None and name:
+        name_weight_match = re.search(r"(\d+\.?\d*)\s*(g|mg|oz|lb|kg)", name, re.I)
+        if name_weight_match:
+            weight = name_weight_match.group(0)
 
     # Stock status
     in_stock = raw.get("inStock")
