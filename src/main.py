@@ -226,26 +226,18 @@ class DutchieClient:
 # DISPENSARY RESOLUTION
 # ══════════════════════════════════════════════════════════════════════════════
 
-def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
+def _query_dispensary(client: DutchieClient, cname_or_id: str) -> list[dict]:
     """
-    Resolve a URL slug to a dispensary record (id, name, cName).
-
-    The URL slug (e.g., "quincy-cannabis-co") may differ from the internal
-    cName (e.g., "quincy-cannabis-quincy-retail-rec"). This function tries
-    the slug first via ConsumerDispensaries, then falls back to using
-    the slug as a direct dispensaryId.
-
-    Returns a dict with keys: id, name, cName
-    Raises RuntimeError if the dispensary cannot be found.
+    Query the ConsumerDispensaries endpoint for a given cNameOrID.
+    Returns the list of matching dispensary records (may be empty).
     """
     headers = {
         **BASE_HEADERS,
         "x-apollo-operation-name": "ConsumerDispensaries",
     }
-
     params = {
         "operationName": "ConsumerDispensaries",
-        "variables": json.dumps({"dispensaryFilter": {"cNameOrID": slug}}),
+        "variables": json.dumps({"dispensaryFilter": {"cNameOrID": cname_or_id}}),
         "extensions": json.dumps({
             "persistedQuery": {
                 "version": 1,
@@ -253,13 +245,115 @@ def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
             }
         }),
     }
+    data = client._get(DISPENSARY_ENDPOINT, params=params, headers=headers)
+    return data.get("data", {}).get("filteredDispensaries", [])
 
+
+def _extract_cname_from_html(client: DutchieClient, slug: str) -> str | None:
+    """
+    Fallback: Load the dispensary page HTML and extract the real cName.
+
+    When a user provides a vanity URL slug (e.g., "quincy-cannabis-co"),
+    the ConsumerDispensaries query may return empty because the slug
+    doesn't match any cName. However, Dutchie's frontend JavaScript
+    handles the resolution client-side.
+
+    This function loads the dispensary page and looks for the real cName
+    in the Apollo Client cache, __NEXT_DATA__, or by following any
+    JavaScript-initiated redirects embedded in the page.
+
+    Returns the real cName string, or None if it cannot be determined.
+    """
+    try:
+        logger.info(f"[{slug}] Attempting HTML fallback to resolve vanity URL...")
+        resp = client.session.get(
+            f"https://dutchie.com/dispensary/{slug}",
+            impersonate="chrome",
+            timeout=15,
+        )
+        if resp.status_code != 200:
+            logger.warning(f"[{slug}] HTML fallback got HTTP {resp.status_code}")
+            return None
+
+        html = resp.text
+
+        # Strategy 1: Check if the final URL was redirected (server-side)
+        final_url = str(resp.url)
+        final_match = re.search(r'/dispensary/([^/?#]+)', final_url)
+        if final_match:
+            resolved = final_match.group(1)
+            if resolved != slug:
+                logger.info(f"[{slug}] Server redirect resolved to: {resolved}")
+                return resolved
+
+        # Strategy 2: Look for canonical link tag
+        canonical = re.search(
+            r'<link[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']*/dispensary/([^"\'/]+))',
+            html, re.I
+        )
+        if canonical:
+            resolved = canonical.group(2)
+            if resolved != slug:
+                logger.info(f"[{slug}] Canonical link resolved to: {resolved}")
+                return resolved
+
+        # Strategy 3: Look for dispensary data in __NEXT_DATA__
+        next_data_match = re.search(
+            r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>',
+            html, re.S
+        )
+        if next_data_match:
+            try:
+                nd = json.loads(next_data_match.group(1))
+                # Check pageProps for dispensary data
+                props = nd.get("props", {}).get("pageProps", {})
+                if "dispensary" in props:
+                    disp = props["dispensary"]
+                    cname = disp.get("cName")
+                    if cname and cname != slug:
+                        logger.info(f"[{slug}] __NEXT_DATA__ resolved to: {cname}")
+                        return cname
+            except (json.JSONDecodeError, KeyError):
+                pass
+
+        # Strategy 4: Look for Apollo cache data in the HTML
+        # The Apollo cache sometimes embeds dispensary data in script tags
+        apollo_match = re.search(
+            r'"cName"\s*:\s*"([^"]+)"',
+            html
+        )
+        if apollo_match:
+            resolved = apollo_match.group(1)
+            if resolved != slug:
+                logger.info(f"[{slug}] Apollo cache resolved to: {resolved}")
+                return resolved
+
+        logger.warning(f"[{slug}] HTML fallback could not resolve vanity URL")
+        return None
+
+    except Exception as e:
+        logger.warning(f"[{slug}] HTML fallback failed: {e}")
+        return None
+
+
+def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
+    """
+    Resolve a URL slug to a dispensary record (id, name, cName).
+
+    Resolution strategy (in order):
+      1. Try the slug directly as cNameOrID via ConsumerDispensaries
+      2. If the slug looks like a hex ID, try it as a dispensaryId
+      3. If the slug is a vanity URL, load the dispensary page HTML
+         and extract the real cName, then retry the API query
+      4. As a last resort, provide a helpful error message
+
+    Returns a dict with keys: id, name, cName
+    Raises RuntimeError if the dispensary cannot be found.
+    """
     logger.info(f"[{slug}] Resolving dispensary via ConsumerDispensaries...")
 
-    data = client._get(DISPENSARY_ENDPOINT, params=params, headers=headers)
-
-    dispensaries = data.get("data", {}).get("filteredDispensaries", [])
-
+    # ── Attempt 1: Direct cNameOrID lookup ────────────────────────────────
+    dispensaries = _query_dispensary(client, slug)
     if dispensaries:
         disp = dispensaries[0]
         result = {
@@ -273,13 +367,10 @@ def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
         )
         return result
 
-    # Slug didn't match as cName — maybe it's a vanity URL.
-    # Try using the slug directly as a dispensaryId (some are hex IDs).
+    # ── Attempt 2: Hex ID lookup ──────────────────────────────────────────
     if re.match(r"^[0-9a-fA-F]{24}$", slug):
         logger.info(f"[{slug}] Slug looks like a dispensaryId. Trying direct lookup...")
-        params["variables"] = json.dumps({"dispensaryFilter": {"cNameOrID": slug}})
-        data2 = client._get(DISPENSARY_ENDPOINT, params=params, headers=headers)
-        dispensaries2 = data2.get("data", {}).get("filteredDispensaries", [])
+        dispensaries2 = _query_dispensary(client, slug)
         if dispensaries2:
             disp = dispensaries2[0]
             return {
@@ -288,12 +379,39 @@ def resolve_dispensary(client: DutchieClient, slug: str) -> dict:
                 "cName": disp.get("cName", slug),
             }
 
+    # ── Attempt 3: Vanity URL fallback (HTML scrape) ──────────────────────
+    logger.warning(
+        f"[{slug}] ConsumerDispensaries returned empty. "
+        f"Trying vanity URL fallback..."
+    )
+    resolved_cname = _extract_cname_from_html(client, slug)
+    if resolved_cname:
+        logger.info(f"[{slug}] Vanity URL resolved to cName: {resolved_cname}")
+        dispensaries3 = _query_dispensary(client, resolved_cname)
+        if dispensaries3:
+            disp = dispensaries3[0]
+            return {
+                "id": disp.get("id", ""),
+                "name": disp.get("name", ""),
+                "cName": disp.get("cName", resolved_cname),
+            }
+        else:
+            logger.warning(
+                f"[{slug}] Resolved cName '{resolved_cname}' also returned empty."
+            )
+
+    # ── All attempts failed ───────────────────────────────────────────────
     raise RuntimeError(
         f"Could not find dispensary for slug '{slug}'. "
-        f"This URL slug may be a vanity URL that doesn't match the internal cName. "
-        f"Try using the dispensary's actual Dutchie cName or ID instead. "
-        f"You can find the correct cName by searching for the dispensary on dutchie.com "
-        f"and checking the URL after the page fully loads."
+        f"The ConsumerDispensaries API returned no results. "
+        f"This usually means the URL slug is not a valid Dutchie cName. "
+        f"\n\nTo fix this:\n"
+        f"  1. Open https://dutchie.com/dispensary/{slug} in your browser\n"
+        f"  2. Wait for the page to fully load\n"
+        f"  3. Copy the URL from your browser's address bar\n"
+        f"  4. The slug in the URL after /dispensary/ is the correct cName\n"
+        f"     (it may be different from what you originally entered)\n"
+        f"  5. Use that URL with this scraper"
     )
 
 
