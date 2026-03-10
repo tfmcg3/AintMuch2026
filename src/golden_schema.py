@@ -581,34 +581,60 @@ def extract_raw_fields(raw: dict) -> dict:
         or ""
     )
 
-    # Helper to extract from potency/cannabinoids structure
-    def get_cannabinoid(raw_data, key):
-        # 1. Direct field
-        val = raw_data.get(key) or raw_data.get(key.upper()) or raw_data.get(f"{key}Content")
-        if val: return val
-        
-        # 2. potency object (e.g., potencyThc)
-        potency_key = f"potency{key.capitalize()}"
-        potency = raw_data.get(potency_key)
-        if isinstance(potency, dict):
-            return potency.get("formatted") or potency.get("value") or potency.get("range")
-            
-        # 3. cannabinoids list or object
-        canns = raw_data.get("cannabinoids")
-        if isinstance(canns, dict):
-            c_obj = canns.get(key) or canns.get(key.upper())
-            if isinstance(c_obj, dict):
-                return c_obj.get("formatted") or c_obj.get("value")
-        elif isinstance(canns, list):
-            for c in canns:
-                if isinstance(c, dict) and c.get("type", "").lower() == key.lower():
-                    return c.get("formatted") or c.get("value")
+    # ── Cannabinoid extraction ─────────────────────────────────────────────
+    # Dutchie API structure (confirmed from live API diagnostic, March 2026):
+    #   THC → THCContent.range[0]  (e.g., [20.18])
+    #   CBD → CBDContent.range[0]
+    #   CBG/CBN/THCA/etc → cannabinoidsV2 list, each entry:
+    #     { value: 0.1, unit: 'PERCENTAGE', cannabinoid: { name: 'CBN (Cannabinol)' } }
+    
+    def get_potency_content(raw_data, key_upper):
+        """Extract from THCContent / CBDContent style fields."""
+        content = raw_data.get(f"{key_upper}Content")
+        if isinstance(content, dict):
+            range_val = content.get("range")
+            if isinstance(range_val, list) and range_val:
+                return range_val[0]  # Take first value of range
+            val = content.get("value")
+            if val is not None:
+                return val
+        # Also try direct field (legacy)
+        direct = raw_data.get(key_upper) or raw_data.get(key_upper.lower())
+        if direct is not None:
+            return direct
         return None
 
-    thc = get_cannabinoid(raw, "thc")
-    cbd = get_cannabinoid(raw, "cbd")
-    cbg = get_cannabinoid(raw, "cbg")
-    cbn = get_cannabinoid(raw, "cbn")
+    def get_cannabinoids_v2(raw_data, search_key):
+        """Extract from cannabinoidsV2 list by matching cannabinoid name."""
+        canns_v2 = raw_data.get("cannabinoidsV2") or []
+        search_lower = search_key.lower()
+        for entry in canns_v2:
+            if not isinstance(entry, dict):
+                continue
+            cann_obj = entry.get("cannabinoid", {})
+            cann_name = (cann_obj.get("name") or "").lower()
+            # Match by prefix: 'cbg' matches 'CBG (Cannabigerol)'
+            if cann_name.startswith(search_lower):
+                return entry.get("value")
+        return None
+
+    # THC: try THCContent first, then cannabinoidsV2 for THCA
+    thc = get_potency_content(raw, "THC")
+    if thc is None:
+        thc = get_cannabinoids_v2(raw, "thca")  # THCA is the pre-cursor, most common
+    if thc is None:
+        thc = get_cannabinoids_v2(raw, "thc")
+    
+    # CBD
+    cbd = get_potency_content(raw, "CBD")
+    if cbd is None:
+        cbd = get_cannabinoids_v2(raw, "cbd")
+    
+    # CBG
+    cbg = get_cannabinoids_v2(raw, "cbg")
+    
+    # CBN
+    cbn = get_cannabinoids_v2(raw, "cbn")
 
     # Price — try flat price, then Prices array, then options array
     price = raw.get("price")
@@ -628,37 +654,59 @@ def extract_raw_fields(raw: dict) -> dict:
                     price = opt["price"]
                     break
 
-    # Weight — try flat weight, then options array, then netWeight
-    # Dutchie often stores the real weight inside 'options' or 'variants'
-    weight = raw.get("weight") or raw.get("Weight")
+    # ── Weight extraction ───────────────────────────────────────────────
+    # Dutchie API structure (confirmed from live API diagnostic, March 2026):
+    #   raw.weight = 1000 (ALWAYS, this is a legacy/placeholder field - IGNORE IT)
+    #   raw.rawOptions = ['7.0g']  <- USE THIS (human-readable weight string)
+    #   raw.Options = ['1/4oz']    <- Also usable
+    #   raw.measurements.netWeight.values[0] = 7000 (milligrams)
+    weight = None
     
-    # Strategy 1: Check options (most common for Dutchie GraphQL)
-    options = raw.get("options") or raw.get("Variants") or raw.get("variants") or []
-    if isinstance(options, list) and options:
-        for opt in options:
-            if not isinstance(opt, dict):
-                continue
-            # Try multiple weight fields within the option
-            opt_weight = (
-                opt.get("weight") 
-                or opt.get("Weight") 
-                or opt.get("netWeight")
-                or opt.get("optionName") # Sometimes '1g', '3.5g' is the option name
-                or opt.get("name")
-            )
-            if opt_weight:
-                weight = opt_weight
+    # Strategy 1: rawOptions (most reliable - e.g. ['7.0g', '3.5g'])
+    raw_opts = raw.get("rawOptions") or []
+    if isinstance(raw_opts, list) and raw_opts:
+        for opt in raw_opts:
+            if opt and isinstance(opt, str) and re.search(r"[\d.]+\s*(g|mg|oz|lb)", opt, re.I):
+                weight = opt
                 break
-                
-    # Strategy 2: Check top-level netWeight fallback
+    
+    # Strategy 2: measurements.netWeight.values[0] (in milligrams)
     if weight is None:
-        weight = raw.get("netWeight") or raw.get("net_weight")
-        
-    # Strategy 3: Check product name for weight hints (e.g. "Blue Dream 3.5g")
+        measurements = raw.get("measurements")
+        if isinstance(measurements, dict):
+            net_weight = measurements.get("netWeight")
+            if isinstance(net_weight, dict):
+                values = net_weight.get("values") or []
+                unit = net_weight.get("unit", "").upper()
+                if values and values[0]:
+                    val = float(values[0])
+                    if unit == "MILLIGRAMS":
+                        weight = f"{val}mg"
+                    elif unit == "GRAMS":
+                        weight = f"{val}g"
+                    else:
+                        weight = f"{val}mg"  # Default assume mg
+    
+    # Strategy 3: Options list (e.g. ['1/4oz'])
+    if weight is None:
+        options_list = raw.get("Options") or raw.get("options") or []
+        if isinstance(options_list, list) and options_list:
+            for opt in options_list:
+                if opt and isinstance(opt, str) and re.search(r"[\d./]+\s*(g|mg|oz|lb|eighth|quarter|half)", opt, re.I):
+                    weight = opt
+                    break
+    
+    # Strategy 4: Product name contains weight (e.g. "Blue Dream | Flower | 3.5g")
     if weight is None and name:
-        name_weight_match = re.search(r"(\d+\.?\d*)\s*(g|mg|oz|lb|kg)", name, re.I)
-        if name_weight_match:
-            weight = name_weight_match.group(0)
+        # Look for weight at end of name after pipe separator
+        pipe_match = re.search(r"\|\s*([\d.]+\s*(?:g|mg|oz|lb))\s*$", name, re.I)
+        if pipe_match:
+            weight = pipe_match.group(1)
+        else:
+            # General weight pattern anywhere in name
+            name_weight_match = re.search(r"(\d+\.?\d*)\s*(g|mg|oz|lb|kg)", name, re.I)
+            if name_weight_match:
+                weight = name_weight_match.group(0)
 
     # Stock status
     in_stock = raw.get("inStock")
