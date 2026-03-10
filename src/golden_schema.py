@@ -244,6 +244,8 @@ class GoldenProduct:
     strain_type:      str
     thc_percentage:   Optional[float]
     cbd_percentage:   Optional[float]
+    cbg_percentage:   Optional[float]
+    cbn_percentage:   Optional[float]
     weight_grams:     Optional[float]
     price:            Optional[float]
     price_per_gram:   Optional[float]
@@ -268,6 +270,8 @@ class GoldenProduct:
             self.strain_type,
             self.thc_percentage if self.thc_percentage is not None else "",
             self.cbd_percentage if self.cbd_percentage is not None else "",
+            self.cbg_percentage if self.cbg_percentage is not None else "",
+            self.cbn_percentage if self.cbn_percentage is not None else "",
             self.weight_grams if self.weight_grams is not None else "",
             self.price if self.price is not None else "",
             self.price_per_gram if self.price_per_gram is not None else "",
@@ -281,7 +285,7 @@ class GoldenProduct:
 
 SHEETS_HEADERS = [
     "product_id", "product_name", "brand", "category", "subcategory",
-    "strain_type", "thc_percentage", "cbd_percentage", "weight_grams",
+    "strain_type", "thc_percentage", "cbd_percentage", "cbg_percentage", "cbn_percentage", "weight_grams",
     "price", "price_per_gram", "in_stock", "dispensary_slug",
     "source_url", "scraped_at", "fingerprint",
 ]
@@ -577,29 +581,34 @@ def extract_raw_fields(raw: dict) -> dict:
         or ""
     )
 
-    # THC — try multiple known paths
-    thc = raw.get("thcContent") or raw.get("thc") or raw.get("THC")
-    if thc is None:
-        potency_thc = raw.get("potencyThc")
-        if isinstance(potency_thc, dict):
-            thc = potency_thc.get("formatted") or potency_thc.get("value")
-        cannabinoids = raw.get("cannabinoids")
-        if isinstance(cannabinoids, dict) and thc is None:
-            thc_obj = cannabinoids.get("thc")
-            if isinstance(thc_obj, dict):
-                thc = thc_obj.get("formatted") or thc_obj.get("value")
+    # Helper to extract from potency/cannabinoids structure
+    def get_cannabinoid(raw_data, key):
+        # 1. Direct field
+        val = raw_data.get(key) or raw_data.get(key.upper()) or raw_data.get(f"{key}Content")
+        if val: return val
+        
+        # 2. potency object (e.g., potencyThc)
+        potency_key = f"potency{key.capitalize()}"
+        potency = raw_data.get(potency_key)
+        if isinstance(potency, dict):
+            return potency.get("formatted") or potency.get("value") or potency.get("range")
+            
+        # 3. cannabinoids list or object
+        canns = raw_data.get("cannabinoids")
+        if isinstance(canns, dict):
+            c_obj = canns.get(key) or canns.get(key.upper())
+            if isinstance(c_obj, dict):
+                return c_obj.get("formatted") or c_obj.get("value")
+        elif isinstance(canns, list):
+            for c in canns:
+                if isinstance(c, dict) and c.get("type", "").lower() == key.lower():
+                    return c.get("formatted") or c.get("value")
+        return None
 
-    # CBD — same multi-path logic
-    cbd = raw.get("cbdContent") or raw.get("cbd") or raw.get("CBD")
-    if cbd is None:
-        potency_cbd = raw.get("potencyCbd")
-        if isinstance(potency_cbd, dict):
-            cbd = potency_cbd.get("formatted") or potency_cbd.get("value")
-        cannabinoids = raw.get("cannabinoids")
-        if isinstance(cannabinoids, dict) and cbd is None:
-            cbd_obj = cannabinoids.get("cbd")
-            if isinstance(cbd_obj, dict):
-                cbd = cbd_obj.get("formatted") or cbd_obj.get("value")
+    thc = get_cannabinoid(raw, "thc")
+    cbd = get_cannabinoid(raw, "cbd")
+    cbg = get_cannabinoid(raw, "cbg")
+    cbn = get_cannabinoid(raw, "cbn")
 
     # Price — try flat price, then Prices array, then options array
     price = raw.get("price")
@@ -673,6 +682,8 @@ def extract_raw_fields(raw: dict) -> dict:
         "strain": strain,
         "thc": thc,
         "cbd": cbd,
+        "cbg": cbg,
+        "cbn": cbn,
         "price": price,
         "weight": weight,
         "in_stock": in_stock,
@@ -741,6 +752,8 @@ class GoldenSchemaPipeline:
             strain_type = normalize_strain_type(fields["strain"])
             thc_pct = parse_percentage(fields["thc"])
             cbd_pct = parse_percentage(fields["cbd"])
+            cbg_pct = parse_percentage(fields["cbg"])
+            cbn_pct = parse_percentage(fields["cbn"])
             price = parse_price(fields["price"])
             weight_grams = parse_weight(fields["weight"])
             ppg = compute_price_per_gram(price, weight_grams)
@@ -770,6 +783,8 @@ class GoldenSchemaPipeline:
                 strain_type=strain_type,
                 thc_percentage=thc_pct,
                 cbd_percentage=cbd_pct,
+                cbg_percentage=cbg_pct,
+                cbn_percentage=cbn_pct,
                 weight_grams=weight_grams,
                 price=price,
                 price_per_gram=ppg,
