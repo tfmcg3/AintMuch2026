@@ -452,14 +452,21 @@ def parse_weight(raw) -> Optional[float]:
     mapped = WEIGHT_TO_GRAMS.get(text)
     if mapped:
         return mapped
-    # Handle milligrams
-    mg_match = re.match(r"([\d.]+)\s*mg", text)
+    # Handle milligrams (Dutchie often reports 28g as 28000mg internally)
+    mg_match = re.search(r"([\d.]+)\s*mg", text)
     if mg_match:
-        return round(float(mg_match.group(1)) / 1000, 4)
+        val = float(mg_match.group(1))
+        # If value is huge (like 28000), it's definitely mg
+        return round(val / 1000.0, 4)
+    
     # Handle grams
     g_match = re.search(r"([\d.]+)\s*g(?:ram)?s?", text)
     if g_match:
-        return round(float(g_match.group(1)), 4)
+        val = float(g_match.group(1))
+        # Heuristic: If value is > 500, it's likely actually mg mislabeled as g
+        if val >= 500:
+            return round(val / 1000.0, 4)
+        return round(val, 4)
     # Handle ounces
     oz_match = re.match(r"([\d.]+)\s*oz", text)
     if oz_match:
