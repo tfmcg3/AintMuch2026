@@ -1,0 +1,97 @@
+{
+    "title": "Dutchie Dispensary Scraper Input",
+    "description": "Configuration options for the Dutchie dispensary scraper.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "maxCityPages": {
+            "title": "Maximum City Pages",
+            "type": "integer",
+            "description": "Maximum number of city pages to scrape. Set to 0 to scrape all cities (~1,881 pages).",
+            "default": 0,
+            "minimum": 0,
+            "prefill": 0,
+            "editor": "number"
+        },
+        "maxConcurrency": {
+            "title": "Max Concurrency",
+            "type": "integer",
+            "description": "Maximum number of concurrent browser instances. Higher values = faster but more resource intensive.",
+            "default": 5,
+            "minimum": 1,
+            "maximum": 20,
+            "prefill": 5,
+            "editor": "number"
+        },
+        "maxRequestRetries": {
+            "title": "Max Request Retries",
+            "type": "integer",
+            "description": "Number of times to retry failed requests before giving up.",
+            "default": 3,
+            "minimum": 0,
+            "maximum": 10,
+            "prefill": 3,
+            "editor": "number"
+        },
+        "pageTimeout": {
+            "title": "Page Timeout (ms)",
+            "type": "integer",
+            "description": "Maximum time in milliseconds to wait for page navigation.",
+            "default": 60000,
+            "minimum": 10000,
+            "maximum": 180000,
+            "prefill": 60000,
+            "editor": "number"
+        },
+        "delayBetweenRequests": {
+            "title": "Delay Between Requests (ms)",
+            "type": "integer",
+            "description": "Delay in milliseconds between processing requests. Helps avoid rate limiting.",
+            "default": 1000,
+            "minimum": 0,
+            "maximum": 10000,
+            "prefill": 1000,
+            "editor": "number"
+        },
+        "startUrls": {
+            "title": "Start URLs",
+            "type": "array",
+            "description": "Optional list of specific city page URLs to scrape. Leave empty to scrape all cities.",
+            "default": [],
+            "prefill": [],
+            "editor": "requestListSources",
+            "items": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "URL",
+                        "format": "uri"
+                    }
+                }
+            }
+        },
+        "debugMode": {
+            "title": "Debug Mode",
+            "type": "boolean",
+            "description": "Enable verbose logging for debugging purposes.",
+            "default": false,
+            "prefill": false,
+            "editor": "checkbox"
+        },
+        "proxyConfiguration": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "Apify Proxy configuration. Use residential proxies for better success rates.",
+            "default": {
+                "useApifyProxy": true
+            },
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy"
+        }
+    },
+    "required": []
+}

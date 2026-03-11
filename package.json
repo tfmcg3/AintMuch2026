@@ -1,0 +1,39 @@
+{
+    "name": "dutchie-dispensary-scraper",
+    "version": "1.0.0",
+    "description": "Apify Actor to scrape all cannabis dispensaries from Dutchie.com",
+    "main": "src/main.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/main.js",
+        "test": "echo \"No tests specified\"",
+        "lint": "eslint src/"
+    },
+    "author": "tfmcg3",
+    "license": "MIT",
+    "dependencies": {
+        "apify": "^3.1.0",
+        "crawlee": "^3.5.0",
+        "puppeteer": "^21.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.50.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "apify",
+        "actor",
+        "scraper",
+        "dutchie",
+        "cannabis",
+        "dispensary",
+        "puppeteer",
+        "crawlee"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tfmcg3/Creating-New-Apify-Actor"
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "actorSpecification": 1,
+    "name": "dutchie-dispensary-scraper",
+    "title": "Dutchie Dispensary Scraper",
+    "description": "Scrapes all cannabis dispensaries from Dutchie.com across the US and Canada. Extracts dispensary names, slugs, locations, and city pages. Outputs deduplicated data in JSON (keyed by slug) and CSV formats.",
+    "version": "1.0.0",
+    "buildTag": "latest",
+    "meta": {
+        "author": "tfmcg3",
+        "template": "puppeteer-crawler"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Dispensary Data",
+            "description": "Contains all scraped dispensary records with cName, name, city_page, state, and country fields.",
+            "views": {
+                "dispensaries": {
+                    "title": "All Dispensaries",
+                    "transformation": {
+                        "fields": ["cName", "name", "city_page", "state", "country"]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "cName": {
+                                "label": "Slug",
+                                "format": "text"
+                            },
+                            "name": {
+                                "label": "Dispensary Name",
+                                "format": "text"
+                            },
+                            "city_page": {
+                                "label": "City Page URL",
+                                "format": "link"
+                            },
+                            "state": {
+                                "label": "State/Province",
+                                "format": "text"
+                            },
+                            "country": {
+                                "label": "Country",
+                                "format": "text"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "minMemoryMbytes": 2048,
+    "maxMemoryMbytes": 8192
+}

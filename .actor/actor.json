@@ -1,0 +1,7 @@
+{
+    "actorSpecification": 1,
+    "name": "dutchie-dispensary-scraper",
+    "title": "Dutchie Dispensary Scraper",
+    "description": "Scrapes all cannabis dispensaries from Dutchie.com across the US and Canada.",
+    "version": "1.0.0"
+}
