@@ -1,0 +1,1817 @@
+{
+  "dank-cannabis-coach-hill": {
+    "cName": "dank-cannabis-coach-hill",
+    "name": "Dank Cannabis - Coach Hill",
+    "city_page": "ab-calgary"
+  },
+  "dank-cannabis-ranchlands": {
+    "cName": "dank-cannabis-ranchlands",
+    "name": "Dank Cannabis - Ranchlands",
+    "city_page": "ab-calgary"
+  },
+  "dank-cannabis-carrington": {
+    "cName": "dank-cannabis-carrington",
+    "name": "Dank Cannabis - Carrington",
+    "city_page": "ab-calgary"
+  },
+  "four-20-stephen-ave": {
+    "cName": "four-20-stephen-ave",
+    "name": "FOUR20 (Stephen Ave)",
+    "city_page": "ab-calgary"
+  },
+  "four20-beltline": {
+    "cName": "four20-beltline",
+    "name": "FOUR20 (Beltline)",
+    "city_page": "ab-calgary"
+  },
+  "fivepointcannabis-victoriapark": {
+    "cName": "fivepointcannabis-victoriapark",
+    "name": "FivePoint Cannabis 1st St",
+    "city_page": "ab-calgary"
+  },
+  "four20-17th-ave-west": {
+    "cName": "four20-17th-ave-west",
+    "name": "FOUR20 (17th Ave West)",
+    "city_page": "ab-calgary"
+  },
+  "four20-bridgeland": {
+    "cName": "four20-bridgeland",
+    "name": "FOUR20 (Bridgeland)",
+    "city_page": "ab-calgary"
+  },
+  "four20-inglewood": {
+    "cName": "four20-inglewood",
+    "name": "Four20 (Inglewood)",
+    "city_page": "ab-calgary"
+  },
+  "four20-marda-loop": {
+    "cName": "four20-marda-loop",
+    "name": "FOUR20 (Marda Loop)",
+    "city_page": "ab-calgary"
+  },
+  "four20-killarney": {
+    "cName": "four20-killarney",
+    "name": "FOUR20 (Killarney)",
+    "city_page": "ab-calgary"
+  },
+  "four20-premium-market-chinook": {
+    "cName": "four20-premium-market-chinook",
+    "name": "Four20 (Chinook)",
+    "city_page": "ab-calgary"
+  },
+  "four20-erin-woods": {
+    "cName": "four20-erin-woods",
+    "name": "FOUR20 (Erin Woods)",
+    "city_page": "ab-calgary"
+  },
+  "four20-sage-hill": {
+    "cName": "four20-sage-hill",
+    "name": "FOUR20 (Sage Hill)",
+    "city_page": "ab-calgary"
+  },
+  "four20-royal-oak": {
+    "cName": "four20-royal-oak",
+    "name": "FOUR20 (Royal Oak)",
+    "city_page": "ab-calgary"
+  },
+  "four20-whyte-ave": {
+    "cName": "four20-whyte-ave",
+    "name": "FOUR20 (Whyte Ave)",
+    "city_page": "ab-edmonton"
+  },
+  "four20-ottewell": {
+    "cName": "four20-ottewell",
+    "name": "FOUR20 (Capilano)",
+    "city_page": "ab-edmonton"
+  },
+  "four20-tamarack": {
+    "cName": "four20-tamarack",
+    "name": "FOUR20 (Tamarack)",
+    "city_page": "ab-edmonton"
+  },
+  "spiritleaf-salisbury": {
+    "cName": "spiritleaf-salisbury",
+    "name": "Spiritleaf (Sherwood Park - Salisbury)",
+    "city_page": "ab-edmonton"
+  },
+  "four20-sherwood-park": {
+    "cName": "four20-sherwood-park",
+    "name": "FOUR20 (Sherwood Park)",
+    "city_page": "ab-edmonton"
+  },
+  "four20-beaumont": {
+    "cName": "four20-beaumont",
+    "name": "FOUR20 (Beaumont)",
+    "city_page": "ab-edmonton"
+  },
+  "water-street-cannabis": {
+    "cName": "water-street-cannabis",
+    "name": "Water Street Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "team-cannabis-west-broadway": {
+    "cName": "team-cannabis-west-broadway",
+    "name": "Team Cannabis - West Broadway",
+    "city_page": "bc-vancouver"
+  },
+  "canapa-sky-cannabis-co": {
+    "cName": "canapa-sky-cannabis-co",
+    "name": "Canapa Sky Cannabis Co",
+    "city_page": "bc-vancouver"
+  },
+  "dutch-love-yaletown": {
+    "cName": "dutch-love-yaletown",
+    "name": "Dutch Love - Yaletown",
+    "city_page": "bc-vancouver"
+  },
+  "muse-cannabis": {
+    "cName": "muse-cannabis",
+    "name": "Muse Cannabis (South Granville & 15th Ave)",
+    "city_page": "bc-vancouver"
+  },
+  "dutch-love-main-street": {
+    "cName": "dutch-love-main-street",
+    "name": "Dutch Love - Main Street",
+    "city_page": "bc-vancouver"
+  },
+  "local-cannabis-co-kingsway": {
+    "cName": "local-cannabis-co-kingsway",
+    "name": "Local Cannabis Co. - Kingsway",
+    "city_page": "bc-vancouver"
+  },
+  "canntina-main": {
+    "cName": "canntina-main",
+    "name": "Canntina - Main",
+    "city_page": "bc-vancouver"
+  },
+  "marigolds-davie-st": {
+    "cName": "marigolds-davie-st",
+    "name": "Marigolds - Davie St.",
+    "city_page": "bc-vancouver"
+  },
+  "east-side-cannabis": {
+    "cName": "east-side-cannabis",
+    "name": "East Side Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "marigolds-cannabis": {
+    "cName": "marigolds-cannabis",
+    "name": "Marigolds Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "inspired-cannabis-house-of-brands": {
+    "cName": "inspired-cannabis-house-of-brands",
+    "name": "Inspired Cannabis - House of Brands",
+    "city_page": "bc-vancouver"
+  },
+  "muse-cannabis-downtown": {
+    "cName": "muse-cannabis-downtown",
+    "name": "Muse Cannabis (Granville & Pender)",
+    "city_page": "bc-vancouver"
+  },
+  "quantum-1-vancouver-cambie": {
+    "cName": "quantum-1-vancouver-cambie",
+    "name": "Quantum 1 Cannabis - Vancouver Cambie",
+    "city_page": "bc-vancouver"
+  },
+  "imagine-cannabis-english-bay": {
+    "cName": "imagine-cannabis-english-bay",
+    "name": "Imagine Cannabis - English Bay",
+    "city_page": "bc-vancouver"
+  },
+  "inspired-cannabis-west-end": {
+    "cName": "inspired-cannabis-west-end",
+    "name": "Inspired Cannabis - West End",
+    "city_page": "bc-vancouver"
+  },
+  "muse-cannabis-west-end": {
+    "cName": "muse-cannabis-west-end",
+    "name": "Muse Cannabis (West End)",
+    "city_page": "bc-vancouver"
+  },
+  "inspired-cannabis-kitsilano": {
+    "cName": "inspired-cannabis-kitsilano",
+    "name": "Inspired Cannabis - Kitsilano",
+    "city_page": "bc-vancouver"
+  },
+  "kingsway-cannabis": {
+    "cName": "kingsway-cannabis",
+    "name": "Kingsway Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "camino-cannabis": {
+    "cName": "camino-cannabis",
+    "name": "Camino Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "canntina-renfrew": {
+    "cName": "canntina-renfrew",
+    "name": "Canntina - Renfrew",
+    "city_page": "bc-vancouver"
+  },
+  "uem-cannabis": {
+    "cName": "uem-cannabis",
+    "name": "UEM - Vancouver",
+    "city_page": "bc-vancouver"
+  },
+  "57-cannabis-dispensary": {
+    "cName": "57-cannabis-dispensary",
+    "name": "57 Cannabis Dispensary",
+    "city_page": "bc-vancouver"
+  },
+  "the-joint3": {
+    "cName": "the-joint3",
+    "name": "The Joint",
+    "city_page": "bc-vancouver"
+  },
+  "lift-cannabis-vancouver": {
+    "cName": "lift-cannabis-vancouver",
+    "name": "Lift Cannabis - Vancouver",
+    "city_page": "bc-vancouver"
+  },
+  "local-burnaby-holdings-ltd-dba-local-cannabis-co-burnaby": {
+    "cName": "local-burnaby-holdings-ltd-dba-local-cannabis-co-burnaby",
+    "name": "Local Cannabis Co. - Burnaby",
+    "city_page": "bc-vancouver"
+  },
+  "quantum-cannabis-north-vancouver": {
+    "cName": "quantum-cannabis-north-vancouver",
+    "name": "Quantum 1 Cannabis - North Vancouver",
+    "city_page": "bc-vancouver"
+  },
+  "Cannabis-Supply-Co-North-Vancouver": {
+    "cName": "Cannabis-Supply-Co-North-Vancouver",
+    "name": "Cannabis Supply Co. North Vancouver",
+    "city_page": "bc-vancouver"
+  },
+  "imagine-cannabis-lynn-valley": {
+    "cName": "imagine-cannabis-lynn-valley",
+    "name": "Imagine Cannabis - Lynn Valley",
+    "city_page": "bc-vancouver"
+  },
+  "muse-cannabis-deep-cove": {
+    "cName": "muse-cannabis-deep-cove",
+    "name": "Muse Cannabis (Deep Cove)",
+    "city_page": "bc-vancouver"
+  },
+  "bohemian-cannabis-co-new-west": {
+    "cName": "bohemian-cannabis-co-new-west",
+    "name": "Bohemian Cannabis Co - New Westminster",
+    "city_page": "bc-vancouver"
+  },
+  "queensborough-cannabis": {
+    "cName": "queensborough-cannabis",
+    "name": "Queens Cannabis Co | Online Delivery / New Westminster",
+    "city_page": "bc-vancouver"
+  },
+  "seed-and-stone-coquitlam": {
+    "cName": "seed-and-stone-coquitlam",
+    "name": "Seed & Stone (Coquitlam)",
+    "city_page": "bc-vancouver"
+  },
+  "imagine-cannabis-burquitlam": {
+    "cName": "imagine-cannabis-burquitlam",
+    "name": "Imagine Cannabis - Burquitlam",
+    "city_page": "bc-vancouver"
+  },
+  "happy-isle-cannabis": {
+    "cName": "happy-isle-cannabis",
+    "name": "Happy Isle Cannabis",
+    "city_page": "bc-vancouver"
+  },
+  "imagine-cannabis-ladner": {
+    "cName": "imagine-cannabis-ladner",
+    "name": "Imagine Cannabis - Ladner",
+    "city_page": "bc-vancouver"
+  },
+  "bohemian-cannabis-co-port-moody": {
+    "cName": "bohemian-cannabis-co-port-moody",
+    "name": "Bohemian Cannabis Co - Port Moody",
+    "city_page": "bc-vancouver"
+  },
+  "inspired-cannabis-delta": {
+    "cName": "inspired-cannabis-delta",
+    "name": "Inspired Cannabis - Delta",
+    "city_page": "bc-vancouver"
+  },
+  "happy-isle-cannabis-company-bowen-island": {
+    "cName": "happy-isle-cannabis-company-bowen-island",
+    "name": "Happy Isle Cannabis Company- Bowen Island",
+    "city_page": "bc-vancouver"
+  },
+  "dutch-love-surrey-central": {
+    "cName": "dutch-love-surrey-central",
+    "name": "Dutch Love - City Centre",
+    "city_page": "bc-vancouver"
+  },
+  "queensborough-delta": {
+    "cName": "queensborough-delta",
+    "name": "Queens Cannabis Co | Surrey / Delta",
+    "city_page": "bc-vancouver"
+  },
+  "imagine-cannabis-newton-village": {
+    "cName": "imagine-cannabis-newton-village",
+    "name": "Imagine Cannabis - Newton Village",
+    "city_page": "bc-vancouver"
+  },
+  "wonderland-cannabis-entertainment-distric": {
+    "cName": "wonderland-cannabis-entertainment-distric",
+    "name": "Wonderland Cannabis - Entertainment Distric",
+    "city_page": "on-toronto"
+  },
+  "ma-cannabis": {
+    "cName": "ma-cannabis",
+    "name": "Ma Cannabis",
+    "city_page": "on-toronto"
+  },
+  "the-bakery-cannabis-store": {
+    "cName": "the-bakery-cannabis-store",
+    "name": "The Bkry Cannabis Store",
+    "city_page": "on-toronto"
+  },
+  "cookies-toronto": {
+    "cName": "cookies-toronto",
+    "name": "Cookies Toronto",
+    "city_page": "on-toronto"
+  },
+  "rosebud-cannabis2": {
+    "cName": "rosebud-cannabis2",
+    "name": "Rosebud Cannabis",
+    "city_page": "on-toronto"
+  },
+  "insalata-toronto-front-st-w": {
+    "cName": "insalata-toronto-front-st-w",
+    "name": "Insalata (Toronto Front St)",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-450-yonge-st": {
+    "cName": "tokyo-smoke-450-yonge-st",
+    "name": "Tokyo Smoke (450 Yonge St.)",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-600-fleet-st-toronto": {
+    "cName": "the-hunny-pot-cannabis-co-600-fleet-st-toronto",
+    "name": "The Hunny Pot Cannabis Co. (600 Fleet St, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "the-green-closet": {
+    "cName": "the-green-closet",
+    "name": "The Green Closet",
+    "city_page": "on-toronto"
+  },
+  "northern-helm-cannabis-king-st-e": {
+    "cName": "northern-helm-cannabis-king-st-e",
+    "name": "Northern Helm - King St E",
+    "city_page": "on-toronto"
+  },
+  "spiritleaf-little-italy": {
+    "cName": "spiritleaf-little-italy",
+    "name": "Spiritleaf (Little Italy)",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-94-cumberland-st": {
+    "cName": "tokyo-smoke-94-cumberland-st",
+    "name": "Tokyo Smoke (94 Cumberland St)",
+    "city_page": "on-toronto"
+  },
+  "day-n-nite": {
+    "cName": "day-n-nite",
+    "name": "Day 'N' Nite Cannabis",
+    "city_page": "on-toronto"
+  },
+  "canvas-liberty": {
+    "cName": "canvas-liberty",
+    "name": "Canvas (Liberty)",
+    "city_page": "on-toronto"
+  },
+  "manis-toke": {
+    "cName": "manis-toke",
+    "name": "Mani's Toke",
+    "city_page": "on-toronto"
+  },
+  "davenport-leaf": {
+    "cName": "davenport-leaf",
+    "name": "Davenport Leaf",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-1166-yonge-st": {
+    "cName": "the-hunny-pot-cannabis-co-1166-yonge-st",
+    "name": "The Hunny Pot Cannabis Co. (1166 Yonge St, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "cosmo-canna": {
+    "cName": "cosmo-canna",
+    "name": "Cosmo Canna",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-bloor-and-dovercourt": {
+    "cName": "tokyo-smoke-bloor-and-dovercourt",
+    "name": "Tokyo Smoke (Bloor & Dovercourt)",
+    "city_page": "on-toronto"
+  },
+  "dutch-love-parkdale": {
+    "cName": "dutch-love-parkdale",
+    "name": "Dutch Love - Parkdale",
+    "city_page": "on-toronto"
+  },
+  "green-merchant-cannabis-co-danforth": {
+    "cName": "green-merchant-cannabis-co-danforth",
+    "name": "Green Merchant Cannabis Co. (Danforth)",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-bloordale-village": {
+    "cName": "growers-retail-bloordale-village",
+    "name": "Growers Retail (Bloordale Village)",
+    "city_page": "on-toronto"
+  },
+  "canvas": {
+    "cName": "canvas",
+    "name": "Canvas (Danforth)",
+    "city_page": "on-toronto"
+  },
+  "ambrosia-cannabis": {
+    "cName": "ambrosia-cannabis",
+    "name": "Aroma Cannabis Emporium",
+    "city_page": "on-toronto"
+  },
+  "spiritleaf-parkdale": {
+    "cName": "spiritleaf-parkdale",
+    "name": "Spiritleaf (Parkdale)",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-pape-village": {
+    "cName": "growers-retail-pape-village",
+    "name": "Growers Retail (Pape Village)",
+    "city_page": "on-toronto"
+  },
+  "plant-republic-pape": {
+    "cName": "plant-republic-pape",
+    "name": "Plant Republic 1031 Pape",
+    "city_page": "on-toronto"
+  },
+  "fogtown-merton": {
+    "cName": "fogtown-merton",
+    "name": "Fogtown - Merton",
+    "city_page": "on-toronto"
+  },
+  "wonderland-cannabis": {
+    "cName": "wonderland-cannabis",
+    "name": "Wonderland Cannabis",
+    "city_page": "on-toronto"
+  },
+  "northern-helm-danforth": {
+    "cName": "northern-helm-danforth",
+    "name": "Northern Helm - Danforth",
+    "city_page": "on-toronto"
+  },
+  "insalata": {
+    "cName": "insalata",
+    "name": "Insalata",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-2103-yonge-st": {
+    "cName": "the-hunny-pot-cannabis-co-2103-yonge-st",
+    "name": "The Hunny Pot Cannabis Co. (2103 Yonge St, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-coxwell": {
+    "cName": "cannabis-hut-coxwell",
+    "name": "Cannabis Hut - Coxwell",
+    "city_page": "on-toronto"
+  },
+  "fogtown-flower-mount-pleasant-rd": {
+    "cName": "fogtown-flower-mount-pleasant-rd",
+    "name": "Fogtown Mount Pleasant",
+    "city_page": "on-toronto"
+  },
+  "fogtown-flower": {
+    "cName": "fogtown-flower",
+    "name": "Fogtown Midtown",
+    "city_page": "on-toronto"
+  },
+  "white-rabbit-cannabis": {
+    "cName": "white-rabbit-cannabis",
+    "name": "White Rabbit Cannabis",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-2173-yonge-toronto": {
+    "cName": "the-hunny-pot-cannabis-co-2173-yonge-toronto",
+    "name": "The Hunny Pot Cannabis Co. (2173 Yonge, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "runway-pot-etobicoke": {
+    "cName": "runway-pot-etobicoke",
+    "name": "Runway Pot - Toronto",
+    "city_page": "on-toronto"
+  },
+  "nuleef-cannabis": {
+    "cName": "nuleef-cannabis",
+    "name": "NULEEF CANNABIS",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co1": {
+    "cName": "the-hunny-pot-cannabis-co1",
+    "name": "Hunny Pot Cannabis (400 Pacific Ave, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "seven-point-cannabis-bloor": {
+    "cName": "seven-point-cannabis-bloor",
+    "name": "Seven Point Cannabis (Bloor)",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-yonge-st": {
+    "cName": "the-hunny-pot-cannabis-co-yonge-st",
+    "name": "The Hunny Pot Cannabis Co. (2591 Yonge St, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "spiritleaf-beaches": {
+    "cName": "spiritleaf-beaches",
+    "name": "Spiritleaf (Beaches)",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-parliament1": {
+    "cName": "growers-retail-parliament1",
+    "name": "Growers Retail (Danforth Village)",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-2-8-park-lawn-rd": {
+    "cName": "hunny-pot-cannabis-2-8-park-lawn-rd",
+    "name": "Hunny Pot Cannabis (2-8 Park Lawn Rd)",
+    "city_page": "on-toronto"
+  },
+  "budders-cannabis-toronto": {
+    "cName": "budders-cannabis-toronto",
+    "name": "Budders Cannabis - Toronto",
+    "city_page": "on-toronto"
+  },
+  "soul-rebel-cannabis-co": {
+    "cName": "soul-rebel-cannabis-co",
+    "name": "Inspired Cannabis - Upper Beaches",
+    "city_page": "on-toronto"
+  },
+  "buzzed-buds-young-st": {
+    "cName": "buzzed-buds-young-st",
+    "name": "Buzzed Buds (Yonge St)",
+    "city_page": "on-toronto"
+  },
+  "the-rainbow-palace-scarborough": {
+    "cName": "the-rainbow-palace-scarborough",
+    "name": "Cannabis Place",
+    "city_page": "on-toronto"
+  },
+  "erbn-green-yongelawrence": {
+    "cName": "erbn-green-yongelawrence",
+    "name": "ERBN Green - Yonge/Lawrence",
+    "city_page": "on-toronto"
+  },
+  "take-me-home-cannabis": {
+    "cName": "take-me-home-cannabis",
+    "name": "Take Me Home Cannabis",
+    "city_page": "on-toronto"
+  },
+  "spiritleaf-don-mills": {
+    "cName": "spiritleaf-don-mills",
+    "name": "Spiritleaf (Don Mills)",
+    "city_page": "on-toronto"
+  },
+  "maryjanes-scarlet": {
+    "cName": "maryjanes-scarlet",
+    "name": "MaryJane's Scarlet",
+    "city_page": "on-toronto"
+  },
+  "above-the-clouds1": {
+    "cName": "above-the-clouds1",
+    "name": "Above the Clouds (Scarlett Rd)",
+    "city_page": "on-toronto"
+  },
+  "reserve-cannabis": {
+    "cName": "reserve-cannabis",
+    "name": "Reserved Cannabis (Queensway)",
+    "city_page": "on-toronto"
+  },
+  "kush-korner-cannabis": {
+    "cName": "kush-korner-cannabis",
+    "name": "Kush Korner Cannabis",
+    "city_page": "on-toronto"
+  },
+  "bud-bar-express-north-york": {
+    "cName": "bud-bar-express-north-york",
+    "name": "Bud Bar Express - North York",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-queensway": {
+    "cName": "growers-retail-queensway",
+    "name": "Growers Retail (Queensway)",
+    "city_page": "on-toronto"
+  },
+  "ma-cannabis-bloor": {
+    "cName": "ma-cannabis-bloor",
+    "name": "Ma Cannabis - Bloor",
+    "city_page": "on-toronto"
+  },
+  "above-the-clouds": {
+    "cName": "above-the-clouds",
+    "name": "Above the Clouds",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-eglinton-town-centre": {
+    "cName": "tokyo-smoke-eglinton-town-centre",
+    "name": "Tokyo Smoke (Eglinton Town Centre)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-wilson-ave": {
+    "cName": "cannabis-hut-wilson-ave",
+    "name": "Cannabis Hut - Wilson Ave",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-victoria-park": {
+    "cName": "cannabis-hut-victoria-park",
+    "name": "Cannabis Hut - Victoria Park",
+    "city_page": "on-toronto"
+  },
+  "consumers-cannabis-etobicoke": {
+    "cName": "consumers-cannabis-etobicoke",
+    "name": "Consumers Cannabis Etobicoke",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-jane": {
+    "cName": "cannabis-hut-jane",
+    "name": "Cannabis Hut - Jane",
+    "city_page": "on-toronto"
+  },
+  "utopia-cannabis": {
+    "cName": "utopia-cannabis",
+    "name": "Utopia Cannabis",
+    "city_page": "on-toronto"
+  },
+  "fogtown-flower-north-york": {
+    "cName": "fogtown-flower-north-york",
+    "name": "Fogtown North York",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-ltd-kingston": {
+    "cName": "cannabis-hut-ltd-kingston",
+    "name": "Cannabis Hut - Kingston",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-lawrence": {
+    "cName": "growers-retail-lawrence",
+    "name": "Growers Retail (2002 Lawrence Ave E)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-weston-rd": {
+    "cName": "cannabis-hut-weston-rd",
+    "name": "Cannabis Hut - Weston",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-4936-yonge-st-toronto": {
+    "cName": "hunny-pot-cannabis-4936-yonge-st-toronto",
+    "name": "Hunny Pot Cannabis (4936 Yonge St, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "moksha-cannabis-kenaston-gardens": {
+    "cName": "moksha-cannabis-kenaston-gardens",
+    "name": "Moksha Cannabis - Kenaston Gardens",
+    "city_page": "on-toronto"
+  },
+  "paradise-air": {
+    "cName": "paradise-air",
+    "name": "Paradise AIR",
+    "city_page": "on-toronto"
+  },
+  "puffs-haven-5171-yonge-st": {
+    "cName": "puffs-haven-5171-yonge-st",
+    "name": "Puffs Haven (5171 Yonge St)",
+    "city_page": "on-toronto"
+  },
+  "maryjanes-north-york": {
+    "cName": "maryjanes-north-york",
+    "name": "MaryJane's (Weston)",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-201-lloyd-manor-rd-ontario": {
+    "cName": "the-hunny-pot-cannabis-co-201-lloyd-manor-rd-ontario",
+    "name": "The Hunny Pot Cannabis Co. (201 Lloyd Manor Rd., Ontario)",
+    "city_page": "on-toronto"
+  },
+  "fogtown-parkway": {
+    "cName": "fogtown-parkway",
+    "name": "Fogtown Parkway",
+    "city_page": "on-toronto"
+  },
+  "puff-parcels1": {
+    "cName": "puff-parcels1",
+    "name": "Puffs Haven (Yonge & Finch)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-eglington": {
+    "cName": "cannabis-hut-eglington",
+    "name": "Cannabis Hut - Eglinton",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-sheppard": {
+    "cName": "holland-daze-sheppard",
+    "name": "Holland Daze - Sheppard",
+    "city_page": "on-toronto"
+  },
+  "mary-janes": {
+    "cName": "mary-janes",
+    "name": "MaryJane's (YYZ)",
+    "city_page": "on-toronto"
+  },
+  "sessions-humberlea": {
+    "cName": "sessions-humberlea",
+    "name": "Sessions (Humberlea)",
+    "city_page": "on-toronto"
+  },
+  "highlife-on-finch": {
+    "cName": "highlife-on-finch",
+    "name": "Highlife on Finch",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-danforth": {
+    "cName": "holland-daze-danforth",
+    "name": "Holland Daze - Danforth",
+    "city_page": "on-toronto"
+  },
+  "fogtown-finch": {
+    "cName": "fogtown-finch",
+    "name": "Fogtown Finch",
+    "city_page": "on-toronto"
+  },
+  "growers-retail-thomson-park": {
+    "cName": "growers-retail-thomson-park",
+    "name": "Growers Retail (Thomson Park)",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-co-reign-drive": {
+    "cName": "hunny-pot-cannabis-co-reign-drive",
+    "name": "The Hunny Pot Cannabis Co (145 Silver Reign Drive, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-rexdale": {
+    "cName": "cannabis-hut-rexdale",
+    "name": "Cannabis Hut - Rexdale",
+    "city_page": "on-toronto"
+  },
+  "sessions-cannabis-north-york": {
+    "cName": "sessions-cannabis-north-york",
+    "name": "Sessions (North York)",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-6-26-william-kitchen-rd-ontario": {
+    "cName": "the-hunny-pot-cannabis-co-6-26-william-kitchen-rd-ontario",
+    "name": "Hunny Pot Cannabis (6-26 William Kitchen Rd, Scarborough)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut": {
+    "cName": "cannabis-hut",
+    "name": "Cannabis Hut",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-brimley": {
+    "cName": "holland-daze-brimley",
+    "name": "Holland Daze - Brimley",
+    "city_page": "on-toronto"
+  },
+  "highlife-steeles": {
+    "cName": "highlife-steeles",
+    "name": "Highlife Steeles",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-3850-sheppard-ave-e": {
+    "cName": "the-hunny-pot-cannabis-co-3850-sheppard-ave-e",
+    "name": "The Hunny Pot Cannabis Co. (3850 Sheppard Ave E, Toronto)",
+    "city_page": "on-toronto"
+  },
+  "moksha-cannabis-pharmacy-ave": {
+    "cName": "moksha-cannabis-pharmacy-ave",
+    "name": "Moksha Cannabis - Pharmacy Ave",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-birchmount": {
+    "cName": "holland-daze-birchmount",
+    "name": "Holland Daze - Birchmount",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-albion": {
+    "cName": "cannabis-hut-albion",
+    "name": "Cannabis Hut - Albion",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-eglinton-east": {
+    "cName": "holland-daze-eglinton-east",
+    "name": "Holland Daze - Eglinton East",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-lakeshore": {
+    "cName": "cannabis-hut-lakeshore",
+    "name": "Cannabis Hut - Lakeshore",
+    "city_page": "on-toronto"
+  },
+  "fogtown-steeles": {
+    "cName": "fogtown-steeles",
+    "name": "Fogtown Steeles",
+    "city_page": "on-toronto"
+  },
+  "moksha-cannabis-jane-st": {
+    "cName": "moksha-cannabis-jane-st",
+    "name": "Moksha Cannabis - Jane St",
+    "city_page": "on-toronto"
+  },
+  "runway-pot": {
+    "cName": "runway-pot",
+    "name": "Runway Pot",
+    "city_page": "on-toronto"
+  },
+  "holland-daze": {
+    "cName": "holland-daze",
+    "name": "Holland Daze - Painted Post, Scarborough",
+    "city_page": "on-toronto"
+  },
+  "cannabuds": {
+    "cName": "cannabuds",
+    "name": "Cannabuds",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-co-burnhampton": {
+    "cName": "hunny-pot-cannabis-co-burnhampton",
+    "name": "unny Pot Cannabis Co. (980 Burnhamthorpe Rd E, Mississauga)](https://images.dutchie.com/e1fa31d2347874540a986f98d1aaa1b2?auto=format&ixlib=react-9.8.1&h=182&w=325)",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-chartwell-shopping-centre": {
+    "cName": "tokyo-smoke-chartwell-shopping-centre",
+    "name": "Tokyo Smoke (Chartwell Shopping Centre)",
+    "city_page": "on-toronto"
+  },
+  "red-star-cannabis-co": {
+    "cName": "red-star-cannabis-co",
+    "name": "Red Star Cannabis Co",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-ltd-mississauga": {
+    "cName": "cannabis-hut-ltd-mississauga",
+    "name": "Cannabis Hut Ltd - Port Credit",
+    "city_page": "on-toronto"
+  },
+  "sessions-cannabis-albion": {
+    "cName": "sessions-cannabis-albion",
+    "name": "Sessions Etobicoke (Albion)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-hut-scarborough": {
+    "cName": "cannabis-hut-scarborough",
+    "name": "Cannabis Hut - Galloway",
+    "city_page": "on-toronto"
+  },
+  "cannabis-place-mississauga": {
+    "cName": "cannabis-place-mississauga",
+    "name": "Cannabis Place-Mississauga",
+    "city_page": "on-toronto"
+  },
+  "runwaypot": {
+    "cName": "runwaypot",
+    "name": "Runway Pot - Mississauga",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-co-hurontario": {
+    "cName": "hunny-pot-cannabis-co-hurontario",
+    "name": "The Hunny Pot Cannabis Co (2500 Hurontario St, Mississauga)",
+    "city_page": "on-toronto"
+  },
+  "green-merchant-cannabis-co-scarborough": {
+    "cName": "green-merchant-cannabis-co-scarborough",
+    "name": "Green Merchant Cannabis Co. (Scarborough)",
+    "city_page": "on-toronto"
+  },
+  "moksha-cannabis-scarborough": {
+    "cName": "moksha-cannabis-scarborough",
+    "name": "Moksha Cannabis - Scarborough",
+    "city_page": "on-toronto"
+  },
+  "kiosk-cannabis-steeles": {
+    "cName": "kiosk-cannabis-steeles",
+    "name": "Kiosk Cannabis (Steeles)",
+    "city_page": "on-toronto"
+  },
+  "cannabis-xpress-scarborough": {
+    "cName": "cannabis-xpress-scarborough",
+    "name": "CANNABIS XPRESS (Scarborough)",
+    "city_page": "on-toronto"
+  },
+  "the-hunny-pot-cannabis-co-5035-hurontario": {
+    "cName": "the-hunny-pot-cannabis-co-5035-hurontario",
+    "name": "The Hunny Pot Cannabis Co. (5035 Hurontario St, Mississauga)",
+    "city_page": "on-toronto"
+  },
+  "hunny-pot-cannabis-co-4036-confederation-pkwy-mississauga": {
+    "cName": "hunny-pot-cannabis-co-4036-confederation-pkwy-mississauga",
+    "name": "Hunny Pot Cannabis Co (4036 Confederation Pkwy, Mississauga)",
+    "city_page": "on-toronto"
+  },
+  "sticky-nuggz-steeles-west-inc": {
+    "cName": "sticky-nuggz-steeles-west-inc",
+    "name": "Sticky Nuggz (Steeles West)",
+    "city_page": "on-toronto"
+  },
+  "spiritleaf-morningside": {
+    "cName": "spiritleaf-morningside",
+    "name": "Spiritleaf (Scarborough)",
+    "city_page": "on-toronto"
+  },
+  "holland-daze-steeles": {
+    "cName": "holland-daze-steeles",
+    "name": "Holland Daze - Markham (Steeles)",
+    "city_page": "on-toronto"
+  },
+  "value-vapes": {
+    "cName": "value-vapes",
+    "name": "Value Vapes",
+    "city_page": "on-toronto"
+  },
+  "budders-cannabis-mississauga": {
+    "cName": "budders-cannabis-mississauga",
+    "name": "Budders Cannabis - Mississauga",
+    "city_page": "on-toronto"
+  },
+  "seven-point-cannabis-portland": {
+    "cName": "seven-point-cannabis-portland",
+    "name": "Seven Point Cannabis (Portland)",
+    "city_page": "on-toronto"
+  },
+  "canvas-harbord-st": {
+    "cName": "canvas-harbord-st",
+    "name": "Canvas (Harbord St)",
+    "city_page": "on-toronto"
+  },
+  "forever-buds": {
+    "cName": "forever-buds",
+    "name": "Forever Buds",
+    "city_page": "on-toronto"
+  },
+  "cabin-cannabis": {
+    "cName": "cabin-cannabis",
+    "name": "Cabin Cannabis",
+    "city_page": "on-toronto"
+  },
+  "on-high": {
+    "cName": "on-high",
+    "name": "On High Inc.",
+    "city_page": "on-toronto"
+  },
+  "tokyo-smoke-164-evans": {
+    "cName": "tokyo-smoke-164-evans",
+    "name": "Tokyo Smoke (Etobicoke Cool Beer Brewing)",
+    "city_page": "on-toronto"
+  },
+  "take-me-home-cannabis-wilson-ave": {
+    "cName": "take-me-home-cannabis-wilson-ave",
+    "name": "Take Me Home Cannabis - Wilson Ave",
+    "city_page": "on-toronto"
+  },
+  "havok-smoke1": {
+    "cName": "havok-smoke1",
+    "name": "AVOK SMOKE Cannabis & Accessories (Bathurst & Sheppard)](https://zah-dutchie.imgix.net/0993ffa079414b17825ce66848d68f83?auto=format&ixlib=react-9.8.1&h=182&w=325)",
+    "city_page": "on-toronto"
+  },
+  "vape-viva-etobicoke": {
+    "cName": "vape-viva-etobicoke",
+    "name": "Vape Viva - Etobicoke",
+    "city_page": "on-toronto"
+  },
+  "soma-leaf-company": {
+    "cName": "soma-leaf-company",
+    "name": "Soma Leaf Co. - Mississauga",
+    "city_page": "on-toronto"
+  },
+  "pufftastic-cannabis-co": {
+    "cName": "pufftastic-cannabis-co",
+    "name": "Pufftastic Cannabis Co.",
+    "city_page": "on-toronto"
+  },
+  "gl-west-memphis": {
+    "cName": "gl-west-memphis",
+    "name": "Elevate Dispensary - West Memphis",
+    "city_page": "ar-west-memphis"
+  },
+  "comprehensive-care-group-retail": {
+    "cName": "comprehensive-care-group-retail",
+    "name": "Comprehensive Care Group Retail",
+    "city_page": "ar-west-memphis"
+  },
+  "jars-24th-street-dreem-green-rec": {
+    "cName": "jars-24th-street-dreem-green-rec",
+    "name": "JARS - Phoenix Airport (Rec/Med)",
+    "city_page": "az-phoenix"
+  },
+  "nirvana-center-tempe-mmj-apothecary": {
+    "cName": "nirvana-center-tempe-mmj-apothecary",
+    "name": "Backpack Boyz",
+    "city_page": "az-phoenix"
+  },
+  "jars-arcadia-legacy-and-co-rec": {
+    "cName": "jars-arcadia-legacy-and-co-rec",
+    "name": "JARS - Arcadia (Rec/Med)",
+    "city_page": "az-phoenix"
+  },
+  "truormed-dispensary": {
+    "cName": "truormed-dispensary",
+    "name": "Tru|Med Dispensary",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-dispensary-tempe": {
+    "cName": "the-mint-dispensary-tempe",
+    "name": "The Mint - Tempe",
+    "city_page": "az-phoenix"
+  },
+  "jars-tolleson": {
+    "cName": "jars-tolleson",
+    "name": "JARS - Tolleson (Rec/Med)",
+    "city_page": "az-phoenix"
+  },
+  "jars-metrocenter-desert-medical-campus-rec": {
+    "cName": "jars-metrocenter-desert-medical-campus-rec",
+    "name": "JARS - Metrocenter (Rec/Med)",
+    "city_page": "az-phoenix"
+  },
+  "wickenburg-alternative-medicine-llc": {
+    "cName": "wickenburg-alternative-medicine-llc",
+    "name": "JARS - Cave Creek (Rec/Med)",
+    "city_page": "az-phoenix"
+  },
+  "the-phoenix-delivery": {
+    "cName": "the-phoenix-delivery",
+    "name": "Story Tolleson",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-north-mesa": {
+    "cName": "harvest-of-north-mesa",
+    "name": "Trulieve of North Mesa",
+    "city_page": "az-phoenix"
+  },
+  "Nirvana-North-Phoenix": {
+    "cName": "Nirvana-North-Phoenix",
+    "name": "The Giving Tree Wellness Center (DBA Nirvana North Phoenix)",
+    "city_page": "az-phoenix"
+  },
+  "trulieve-phx-roosevelt": {
+    "cName": "trulieve-phx-roosevelt",
+    "name": "Trulieve of Roosevelt Row",
+    "city_page": "az-phoenix"
+  },
+  "yavapai-herbal-services-nirvana-7th-st": {
+    "cName": "yavapai-herbal-services-nirvana-7th-st",
+    "name": "Nirvana Cannabis - Downtown Phoenix 7th",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-central": {
+    "cName": "curaleaf-dispensary-central",
+    "name": "Curaleaf (AZ) - Central",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-midtown": {
+    "cName": "curaleaf-dispensary-midtown",
+    "name": "Curaleaf (AZ) - Mid Town",
+    "city_page": "az-phoenix"
+  },
+  "natures-medicines-phoenix-med": {
+    "cName": "natures-medicines-phoenix-med",
+    "name": "Story McDowell",
+    "city_page": "az-phoenix"
+  },
+  "jungle-boys-midtown-phoenix": {
+    "cName": "jungle-boys-midtown-phoenix",
+    "name": "Story Midtown Phoenix",
+    "city_page": "az-phoenix"
+  },
+  "Natures-Wonder-Phoenix-Dispensary": {
+    "cName": "Natures-Wonder-Phoenix-Dispensary",
+    "name": "Nature's Wonder Phoenix Dispensary",
+    "city_page": "az-phoenix"
+  },
+  "Natures-Wonder-Grand-Ave-Dispensary": {
+    "cName": "Natures-Wonder-Grand-Ave-Dispensary",
+    "name": "Nature's Wonder Grand Ave Dispensary",
+    "city_page": "az-phoenix"
+  },
+  "urban-green-house": {
+    "cName": "urban-green-house",
+    "name": "Trulieve of Phoenix Alhambra",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-camelback": {
+    "cName": "curaleaf-dispensary-camelback",
+    "name": "Curaleaf (AZ) - Camelback",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-phoenix-airport": {
+    "cName": "curaleaf-dispensary-phoenix-airport",
+    "name": "Curaleaf (AZ) - Phoenix",
+    "city_page": "az-phoenix"
+  },
+  "herbal-wellness-center-west": {
+    "cName": "herbal-wellness-center-west",
+    "name": "Herbal Wellness Center - West",
+    "city_page": "az-phoenix"
+  },
+  "yilo-superstore-arcadia": {
+    "cName": "yilo-superstore-arcadia",
+    "name": "Yilo Superstore (Arcadia)",
+    "city_page": "az-phoenix"
+  },
+  "sol-flower-dispensary-university": {
+    "cName": "sol-flower-dispensary-university",
+    "name": "Sol Flower Dispensary University",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-48th-street": {
+    "cName": "curaleaf-dispensary-48th-street",
+    "name": "Curaleaf (AZ) - 48th Street",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-northern": {
+    "cName": "the-mint-northern",
+    "name": "The Mint - Northern",
+    "city_page": "az-phoenix"
+  },
+  "cookies-tempe": {
+    "cName": "cookies-tempe",
+    "name": "Cookies - Tempe",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-baseline": {
+    "cName": "harvest-of-baseline",
+    "name": "Trulieve of Baseline",
+    "city_page": "az-phoenix"
+  },
+  "chandler-south-new-higher-than-high-i-llc-jjazse": {
+    "cName": "chandler-south-new-higher-than-high-i-llc-jjazse",
+    "name": "Story Dunlap",
+    "city_page": "az-phoenix"
+  },
+  "arizona-organix": {
+    "cName": "arizona-organix",
+    "name": "Arizona Organix",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-75th-ave": {
+    "cName": "the-mint-75th-ave",
+    "name": "The Mint - 75th Ave",
+    "city_page": "az-phoenix"
+  },
+  "marigoldscannabis": {
+    "cName": "marigoldscannabis",
+    "name": "Greens Goddess Products, Inc._DBA Key Cannabis (Dunlap)",
+    "city_page": "az-phoenix"
+  },
+  "nirvana-75th-yavapai-herbal-services": {
+    "cName": "nirvana-75th-yavapai-herbal-services",
+    "name": "Nirvana Cannabis - West Phoenix (75th)",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-phoenix": {
+    "cName": "harvest-of-phoenix",
+    "name": "Trulieve of Phoenix North Mountain",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-pavilions": {
+    "cName": "curaleaf-dispensary-pavilions",
+    "name": "Curaleaf (AZ) - 83rd Dispensary",
+    "city_page": "az-phoenix"
+  },
+  "sol-flower-dispensary-mcclintock": {
+    "cName": "sol-flower-dispensary-mcclintock",
+    "name": "Sol Flower Dispensary McClintock",
+    "city_page": "az-phoenix"
+  },
+  "sol-flower-dispensary-deer-valley": {
+    "cName": "sol-flower-dispensary-deer-valley",
+    "name": "Sol Flower Dispensary Shea",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-tempe": {
+    "cName": "harvest-of-tempe",
+    "name": "Trulieve of Tempe",
+    "city_page": "az-phoenix"
+  },
+  "natures-medicines-glendale-med": {
+    "cName": "natures-medicines-glendale-med",
+    "name": "Story of Arizona - Grand",
+    "city_page": "az-phoenix"
+  },
+  "yilo-superstore1": {
+    "cName": "yilo-superstore1",
+    "name": "Yilo Superstore",
+    "city_page": "az-phoenix"
+  },
+  "Ponderosa-TempeMesa": {
+    "cName": "Ponderosa-TempeMesa",
+    "name": "Ponderosa - Tempe / Mesa",
+    "city_page": "az-phoenix"
+  },
+  "the-good-dispensary": {
+    "cName": "the-good-dispensary",
+    "name": "The Good Dispensary",
+    "city_page": "az-phoenix"
+  },
+  "oasis-cannabis-north": {
+    "cName": "oasis-cannabis-north",
+    "name": "Story North Chandler",
+    "city_page": "az-phoenix"
+  },
+  "Ponderosa-Glendale": {
+    "cName": "Ponderosa-Glendale",
+    "name": "Ponderosa - Glendale",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-scottsdale": {
+    "cName": "the-mint-scottsdale",
+    "name": "The Mint - Scottsdale",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-glendale": {
+    "cName": "harvest-of-glendale",
+    "name": "Trulieve of Glendale",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-peoria": {
+    "cName": "curaleaf-dispensary-peoria",
+    "name": "Curaleaf (AZ) - Peoria",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-dispensary-bell": {
+    "cName": "curaleaf-dispensary-bell",
+    "name": "Curaleaf (AZ) - Bell",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-dispensary-bell-rd": {
+    "cName": "the-mint-dispensary-bell-rd",
+    "name": "The Mint - Bell Road",
+    "city_page": "az-phoenix"
+  },
+  "harvest-of-peoria": {
+    "cName": "harvest-of-peoria",
+    "name": "Trulieve of Peoria",
+    "city_page": "az-phoenix"
+  },
+  "trulieve-of-phoenix-tatum": {
+    "cName": "trulieve-of-phoenix-tatum",
+    "name": "Trulieve of Phoenix Tatum",
+    "city_page": "az-phoenix"
+  },
+  "curaleaf-az-glendale-east": {
+    "cName": "curaleaf-az-glendale-east",
+    "name": "Curaleaf (AZ) - Glendale East",
+    "city_page": "az-phoenix"
+  },
+  "Ponderosa-Chandler": {
+    "cName": "Ponderosa-Chandler",
+    "name": "Ponderosa - Chandler",
+    "city_page": "az-phoenix"
+  },
+  "the-mint-dispensary-mesa": {
+    "cName": "the-mint-dispensary-mesa",
+    "name": "The Mint - Mesa",
+    "city_page": "az-phoenix"
+  },
+  "story-of-arizona-williams": {
+    "cName": "story-of-arizona-williams",
+    "name": "Story Litchfield",
+    "city_page": "az-phoenix"
+  },
+  "higher-ground-holdings-llc": {
+    "cName": "higher-ground-holdings-llc",
+    "name": "Flower Factory",
+    "city_page": "ca-costa-mesa"
+  },
+  "nectar-costa-mesa": {
+    "cName": "nectar-costa-mesa",
+    "name": "Nectar - Costa Mesa",
+    "city_page": "ca-costa-mesa"
+  },
+  "mr-nice-guy-costa-mesa": {
+    "cName": "mr-nice-guy-costa-mesa",
+    "name": "Mr. Nice Guy (Costa Mesa)",
+    "city_page": "ca-costa-mesa"
+  },
+  "cabrillo-community-project-llc": {
+    "cName": "cabrillo-community-project-llc",
+    "name": "Mr Nice Guy - Native Garden",
+    "city_page": "ca-costa-mesa"
+  },
+  "mr-nice-guy-santa-ana-harbor": {
+    "cName": "mr-nice-guy-santa-ana-harbor",
+    "name": "Mr. Nice Guy (Santa Ana - Harbor)",
+    "city_page": "ca-costa-mesa"
+  },
+  "monex-place-wellness": {
+    "cName": "monex-place-wellness",
+    "name": "Mr. Nice Guy (Santa Ana)",
+    "city_page": "ca-costa-mesa"
+  },
+  "aaa-health-center": {
+    "cName": "aaa-health-center",
+    "name": "Marketplace - By Mr. Nice Guy (Santa Ana)",
+    "city_page": "ca-costa-mesa"
+  },
+  "mr-nice-guy-harbor": {
+    "cName": "mr-nice-guy-harbor",
+    "name": "Mr. Nice Guy - Harbor",
+    "city_page": "ca-costa-mesa"
+  },
+  "herban-kulture-recreational": {
+    "cName": "herban-kulture-recreational",
+    "name": "Herban Kulture - Recreational",
+    "city_page": "ca-costa-mesa"
+  },
+  "jungle-boys-oc1": {
+    "cName": "jungle-boys-oc1",
+    "name": "Jungle Boys - OC",
+    "city_page": "ca-costa-mesa"
+  },
+  "legacy-kush": {
+    "cName": "legacy-kush",
+    "name": "Legacy Kush",
+    "city_page": "ca-costa-mesa"
+  },
+  "culture-stanton-store-inc": {
+    "cName": "culture-stanton-store-inc",
+    "name": "Culture - Stanton",
+    "city_page": "ca-costa-mesa"
+  },
+  "dgt-fresno": {
+    "cName": "dgt-fresno",
+    "name": "DGT Fresno",
+    "city_page": "ca-fresno"
+  },
+  "culture-fresno-maple": {
+    "cName": "culture-fresno-maple",
+    "name": "Culture Fresno - Maple",
+    "city_page": "ca-fresno"
+  },
+  "cookies-fresno": {
+    "cName": "cookies-fresno",
+    "name": "Cookies Fresno",
+    "city_page": "ca-fresno"
+  },
+  "culture-fresno-bullard": {
+    "cName": "culture-fresno-bullard",
+    "name": "Culture Fresno - Bullard",
+    "city_page": "ca-fresno"
+  },
+  "the-grove-la-mesa": {
+    "cName": "the-grove-la-mesa",
+    "name": "The Grove",
+    "city_page": "ca-la-mesa"
+  },
+  "embr": {
+    "cName": "embr",
+    "name": "EMBR (La Mesa)",
+    "city_page": "ca-la-mesa"
+  },
+  "jungle-boys-san-diego": {
+    "cName": "jungle-boys-san-diego",
+    "name": "Jungle Boys - San Diego",
+    "city_page": "ca-la-mesa"
+  },
+  "the-reserve": {
+    "cName": "the-reserve",
+    "name": "The Reserve",
+    "city_page": "ca-la-mesa"
+  },
+  "buzz-cannabis-la-mesa": {
+    "cName": "buzz-cannabis-la-mesa",
+    "name": "BUZZ - La Mesa",
+    "city_page": "ca-la-mesa"
+  },
+  "la-mesa-university-ave": {
+    "cName": "la-mesa-university-ave",
+    "name": "Wellgreens - University",
+    "city_page": "ca-la-mesa"
+  },
+  "la-mesa-lake-murray-blvd": {
+    "cName": "la-mesa-lake-murray-blvd",
+    "name": "Wellgreens - Lake Murray",
+    "city_page": "ca-la-mesa"
+  },
+  "buzz-cannabis-lemon-grove": {
+    "cName": "buzz-cannabis-lemon-grove",
+    "name": "BUZZ - Lemon Grove",
+    "city_page": "ca-la-mesa"
+  },
+  "lemon-grove-federal-blvd": {
+    "cName": "lemon-grove-federal-blvd",
+    "name": "Wellgreens - Lemon Grove",
+    "city_page": "ca-la-mesa"
+  },
+  "city-heights-home-ave": {
+    "cName": "city-heights-home-ave",
+    "name": "Wellgreens - Home",
+    "city_page": "ca-la-mesa"
+  },
+  "mission-valley-camino-del-rio-s": {
+    "cName": "mission-valley-camino-del-rio-s",
+    "name": "Wellgreens - Mission Valley",
+    "city_page": "ca-la-mesa"
+  },
+  "buzz-cannabis-mission-valley": {
+    "cName": "buzz-cannabis-mission-valley",
+    "name": "BUZZ - Mission Valley",
+    "city_page": "ca-la-mesa"
+  },
+  "kearny-mesa-balboa-ave": {
+    "cName": "kearny-mesa-balboa-ave",
+    "name": "Wellgreens - Balboa",
+    "city_page": "ca-la-mesa"
+  },
+  "buzz-cannabis-national-city": {
+    "cName": "buzz-cannabis-national-city",
+    "name": "BUZZ - National City",
+    "city_page": "ca-la-mesa"
+  },
+  "ulbp-bay-park": {
+    "cName": "ulbp-bay-park",
+    "name": "Urbn Leaf (Bay Park)",
+    "city_page": "ca-la-mesa"
+  },
+  "chula-vista-broadway": {
+    "cName": "chula-vista-broadway",
+    "name": "Wellgreens - Chula Vista",
+    "city_page": "ca-la-mesa"
+  },
+  "pacific-beach-de-soto-st": {
+    "cName": "pacific-beach-de-soto-st",
+    "name": "Wellgreens - Pacific Beach",
+    "city_page": "ca-la-mesa"
+  },
+  "buzz-cannabis-sorrento-valley": {
+    "cName": "buzz-cannabis-sorrento-valley",
+    "name": "BUZZ - Sorrento Valley",
+    "city_page": "ca-la-mesa"
+  },
+  "cookies-san-diego": {
+    "cName": "cookies-san-diego",
+    "name": "Cookies La Mesa",
+    "city_page": "ca-la-mesa"
+  },
+  "la-mesa": {
+    "cName": "la-mesa",
+    "name": "Urbn Leaf (La Mesa)",
+    "city_page": "ca-la-mesa"
+  },
+  "jaderoom": {
+    "cName": "jaderoom",
+    "name": "Jaderoom",
+    "city_page": "ca-long-beach"
+  },
+  "og-nation-maywood-sandbox": {
+    "cName": "og-nation-maywood-sandbox",
+    "name": "OG Nation - Maywood Sandbox",
+    "city_page": "ca-long-beach"
+  },
+  "bonafide": {
+    "cName": "bonafide",
+    "name": "OG Nation - Maywood",
+    "city_page": "ca-long-beach"
+  },
+  "the-circle": {
+    "cName": "the-circle",
+    "name": "The Circle",
+    "city_page": "ca-long-beach"
+  },
+  "the-corner": {
+    "cName": "the-corner",
+    "name": "The Corner",
+    "city_page": "ca-long-beach"
+  },
+  "culture-long-beach": {
+    "cName": "culture-long-beach",
+    "name": "Culture - Long Beach",
+    "city_page": "ca-long-beach"
+  },
+  "liberty-beach-center": {
+    "cName": "liberty-beach-center",
+    "name": "Liberty (Beach Center)",
+    "city_page": "ca-long-beach"
+  },
+  "hi-neighbor": {
+    "cName": "hi-neighbor",
+    "name": "Hi Neighbor",
+    "city_page": "ca-los-angeles"
+  },
+  "og-nation-el-monte": {
+    "cName": "og-nation-el-monte",
+    "name": "OG Nation - El Monte",
+    "city_page": "ca-los-angeles"
+  },
+  "jungle-boys-dtla": {
+    "cName": "jungle-boys-dtla",
+    "name": "Jungle Boys - DTLA",
+    "city_page": "ca-los-angeles"
+  },
+  "puff-la-1912": {
+    "cName": "puff-la-1912",
+    "name": "Puff LA - 1912",
+    "city_page": "ca-los-angeles"
+  },
+  "medical-caregivers-company": {
+    "cName": "medical-caregivers-company",
+    "name": "Sky High LA",
+    "city_page": "ca-los-angeles"
+  },
+  "cannabis-house-usc": {
+    "cName": "cannabis-house-usc",
+    "name": "Cannabis House - USC",
+    "city_page": "ca-los-angeles"
+  },
+  "eastern-sereno-group-inc-recreational": {
+    "cName": "eastern-sereno-group-inc-recreational",
+    "name": "Loopy Sanchez",
+    "city_page": "ca-los-angeles"
+  },
+  "hierba": {
+    "cName": "hierba",
+    "name": "Hierba",
+    "city_page": "ca-los-angeles"
+  },
+  "erth-naturals-llc": {
+    "cName": "erth-naturals-llc",
+    "name": "Verde Plus",
+    "city_page": "ca-los-angeles"
+  },
+  "city-cannabis-co": {
+    "cName": "city-cannabis-co",
+    "name": "Weed Shop",
+    "city_page": "ca-los-angeles"
+  },
+  "medmen-west-hollywood": {
+    "cName": "medmen-west-hollywood",
+    "name": "MedMen - West Hollywood",
+    "city_page": "ca-los-angeles"
+  },
+  "weho": {
+    "cName": "weho",
+    "name": "Urbn Leaf (Weho)",
+    "city_page": "ca-los-angeles"
+  },
+  "studio-city": {
+    "cName": "studio-city",
+    "name": "Studio City",
+    "city_page": "ca-los-angeles"
+  },
+  "lax-cc": {
+    "cName": "lax-cc",
+    "name": "LAX CC",
+    "city_page": "ca-los-angeles"
+  },
+  "marina-caregivers": {
+    "cName": "marina-caregivers",
+    "name": "Highway Cannabis - Marina Del Rey",
+    "city_page": "ca-los-angeles"
+  },
+  "kindly-labs-llc": {
+    "cName": "kindly-labs-llc",
+    "name": "Kindly Labs LLC",
+    "city_page": "ca-los-angeles"
+  },
+  "cookies-brentwood": {
+    "cName": "cookies-brentwood",
+    "name": "Cookies Brentwood",
+    "city_page": "ca-los-angeles"
+  },
+  "local-cannabis-co-santa-monica": {
+    "cName": "local-cannabis-co-santa-monica",
+    "name": "Local Cannabis Co. - Santa Monica",
+    "city_page": "ca-los-angeles"
+  },
+  "valley-herbal-center-retail": {
+    "cName": "valley-herbal-center-retail",
+    "name": "Valley Herbal Center - Retail",
+    "city_page": "ca-los-angeles"
+  },
+  "spot-in-perris-llc": {
+    "cName": "spot-in-perris-llc",
+    "name": "Spot in Perris",
+    "city_page": "ca-moreno-valley"
+  },
+  "sipkoi-dispensary": {
+    "cName": "sipkoi-dispensary",
+    "name": "Sipkoi Dispensary",
+    "city_page": "ca-moreno-valley"
+  },
+  "vibe-alessandro": {
+    "cName": "vibe-alessandro",
+    "name": "Vibe Alessandro",
+    "city_page": "ca-moreno-valley"
+  },
+  "vibe-pigeon-pass": {
+    "cName": "vibe-pigeon-pass",
+    "name": "Vibe Pigeon Pass",
+    "city_page": "ca-moreno-valley"
+  },
+  "cookies-san-bernadino": {
+    "cName": "cookies-san-bernadino",
+    "name": "Cookies San Bernardino",
+    "city_page": "ca-moreno-valley"
+  },
+  "the-green-chamber": {
+    "cName": "the-green-chamber",
+    "name": "The Green Chamber",
+    "city_page": "ca-moreno-valley"
+  },
+  "oakanna": {
+    "cName": "oakanna",
+    "name": "Oakanna",
+    "city_page": "ca-oakland"
+  },
+  "nectar-daly-city": {
+    "cName": "nectar-daly-city",
+    "name": "Nectar - Daly City",
+    "city_page": "ca-oakland"
+  },
+  "russian-hill-cannabis-club": {
+    "cName": "russian-hill-cannabis-club",
+    "name": "Russian Hill Cannabis Club",
+    "city_page": "ca-oakland"
+  },
+  "sf-mission": {
+    "cName": "sf-mission",
+    "name": "Mission Cannabis Club",
+    "city_page": "ca-oakland"
+  },
+  "union-street-cannabis-club": {
+    "cName": "union-street-cannabis-club",
+    "name": "Union Cannabis Club",
+    "city_page": "ca-oakland"
+  },
+  "mission-herbal": {
+    "cName": "mission-herbal",
+    "name": "Mission Herbal",
+    "city_page": "ca-oakland"
+  },
+  "herbnjoy-walnut-creek": {
+    "cName": "herbnjoy-walnut-creek",
+    "name": "HerbNJoy - Walnut Creek",
+    "city_page": "ca-oakland"
+  },
+  "hyrba-sunset": {
+    "cName": "hyrba-sunset",
+    "name": "HYRBA (Sunset)",
+    "city_page": "ca-oakland"
+  },
+  "cookies-hayward": {
+    "cName": "cookies-hayward",
+    "name": "Cookies Hayward",
+    "city_page": "ca-oakland"
+  },
+  "cookies-sacramento": {
+    "cName": "cookies-sacramento",
+    "name": "Cookies Sacramento",
+    "city_page": "ca-sacramento"
+  },
+  "lemonnade-sacramento": {
+    "cName": "lemonnade-sacramento",
+    "name": "Lemonnade Sacramento",
+    "city_page": "ca-sacramento"
+  },
+  "lemonnade-south-sacramento": {
+    "cName": "lemonnade-south-sacramento",
+    "name": "Lemonnade South Sacramento",
+    "city_page": "ca-sacramento"
+  },
+  "vibe-by-california-sacramento": {
+    "cName": "vibe-by-california-sacramento",
+    "name": "Vibe Sacramento",
+    "city_page": "ca-sacramento"
+  },
+  "zen-garden": {
+    "cName": "zen-garden",
+    "name": "Zen Garden (Sacramento)",
+    "city_page": "ca-sacramento"
+  },
+  "zen-garden-wellness-bruceville": {
+    "cName": "zen-garden-wellness-bruceville",
+    "name": "Zen Garden Wellness (South Sac)",
+    "city_page": "ca-sacramento"
+  },
+  "ulbp-san-ysidro": {
+    "cName": "ulbp-san-ysidro",
+    "name": "Urbn Leaf (San Ysidro)",
+    "city_page": "ca-san-diego"
+  },
+  "canna-culture-collective-ii": {
+    "cName": "canna-culture-collective-ii",
+    "name": "Canna Culture Collective II",
+    "city_page": "ca-san-jose"
+  },
+  "white-fire": {
+    "cName": "white-fire",
+    "name": "White Fire",
+    "city_page": "ca-san-jose"
+  },
+  "san-jose-daylight-way": {
+    "cName": "san-jose-daylight-way",
+    "name": "Urbn Leaf (San Jose Daylight Way)",
+    "city_page": "ca-san-jose"
+  },
+  "canna-culture-collective": {
+    "cName": "canna-culture-collective",
+    "name": "Canna Culture Collective",
+    "city_page": "ca-san-jose"
+  },
+  "kindpeoples-ocean-st": {
+    "cName": "kindpeoples-ocean-st",
+    "name": "KindPeoples - Ocean St",
+    "city_page": "ca-santa-cruz"
+  },
+  "the-hook-sc": {
+    "cName": "the-hook-sc",
+    "name": "Hook Outlet Santa Cruz",
+    "city_page": "ca-santa-cruz"
+  },
+  "kindpeoples-soquel": {
+    "cName": "kindpeoples-soquel",
+    "name": "KindPeoples - Soquel",
+    "city_page": "ca-santa-cruz"
+  },
+  "treehouse": {
+    "cName": "treehouse",
+    "name": "Treehouse",
+    "city_page": "ca-santa-cruz"
+  },
+  "hook-outlet-capitola": {
+    "cName": "hook-outlet-capitola",
+    "name": "Hook Outlet Capitola",
+    "city_page": "ca-santa-cruz"
+  },
+  "hook-outlet-watsonville": {
+    "cName": "hook-outlet-watsonville",
+    "name": "Hook Outlet Watsonville",
+    "city_page": "ca-santa-cruz"
+  },
+  "hightops-cannabis-royer": {
+    "cName": "hightops-cannabis-royer",
+    "name": "Hightops Cannabis - Royer",
+    "city_page": "co-colorado-springs"
+  },
+  "magnolia-road-log-lane": {
+    "cName": "magnolia-road-log-lane",
+    "name": "Magnolia Road (Colorado Springs)",
+    "city_page": "co-colorado-springs"
+  },
+  "magnolia-road-colorado-springs-rec": {
+    "cName": "magnolia-road-colorado-springs-rec",
+    "name": "Magnolia Road - Colorado Springs REC",
+    "city_page": "co-colorado-springs"
+  },
+  "hightops-cannabis-powers": {
+    "cName": "hightops-cannabis-powers",
+    "name": "Hightops Cannabis - Powers",
+    "city_page": "co-colorado-springs"
+  },
+  "elevations-rec": {
+    "cName": "elevations-rec",
+    "name": "Elevations - Rec",
+    "city_page": "co-colorado-springs"
+  },
+  "the-healing-canna": {
+    "cName": "the-healing-canna",
+    "name": "The Healing Canna - West",
+    "city_page": "co-colorado-springs"
+  },
+  "native-roots-tejon": {
+    "cName": "native-roots-tejon",
+    "name": "Gas & Grass Tejon",
+    "city_page": "co-colorado-springs"
+  },
+  "native-roots-uintah": {
+    "cName": "native-roots-uintah",
+    "name": "Gas & Grass Uintah",
+    "city_page": "co-colorado-springs"
+  },
+  "luxleaf": {
+    "cName": "luxleaf",
+    "name": "Indico MED",
+    "city_page": "co-colorado-springs"
+  },
+  "the-healing-canna-bijou": {
+    "cName": "the-healing-canna-bijou",
+    "name": "The Healing Canna - Bijou",
+    "city_page": "co-colorado-springs"
+  },
+  "native-roots-academy": {
+    "cName": "native-roots-academy",
+    "name": "Gas & Grass Academy",
+    "city_page": "co-colorado-springs"
+  },
+  "native-roots-austin-bluffs": {
+    "cName": "native-roots-austin-bluffs",
+    "name": "Native Roots Austin Bluffs",
+    "city_page": "co-colorado-springs"
+  },
+  "elevations-medical": {
+    "cName": "elevations-medical",
+    "name": "Elevations - Medical",
+    "city_page": "co-colorado-springs"
+  }
+}

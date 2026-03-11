@@ -1,0 +1,80 @@
+{
+    "actorSpecification": 1,
+    "name": "dutchie-menu-scraper",
+    "title": "Dutchie Dispensary Menu Scraper",
+    "description": "High-speed API-based scraper for Dutchie-powered dispensary menus. Scrape a single store in under 60 seconds or run bulk mode to monitor multiple competitors. Outputs clean Golden Schema data with product names, brands, THC/CBD percentages, pricing, weights, and stock status. No browser automation — near-zero compute costs.",
+    "version": "2.0.0",
+    "buildTag": "latest",
+    "input": "./input_schema.json",
+    "dockerfile": "../Dockerfile",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Dispensary Products — Golden Schema",
+            "views": {
+                "all_products": {
+                    "title": "All Products",
+                    "transformation": {
+                        "fields": [
+                            "dispensary_slug",
+                            "category",
+                            "product_name",
+                            "brand",
+                            "strain_type",
+                            "thc_percentage",
+                            "cbd_percentage",
+                            "price",
+                            "weight_grams",
+                            "price_per_gram",
+                            "in_stock",
+                            "scraped_at"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "dispensary_slug":  { "label": "Store",       "format": "text" },
+                            "category":         { "label": "Category",    "format": "text" },
+                            "product_name":     { "label": "Product",     "format": "text" },
+                            "brand":            { "label": "Brand",       "format": "text" },
+                            "strain_type":      { "label": "Strain",      "format": "text" },
+                            "thc_percentage":   { "label": "THC %",       "format": "number" },
+                            "cbd_percentage":   { "label": "CBD %",       "format": "number" },
+                            "price":            { "label": "Price ($)",    "format": "number" },
+                            "weight_grams":     { "label": "Weight (g)",   "format": "number" },
+                            "price_per_gram":   { "label": "$/gram",      "format": "number" },
+                            "in_stock":         { "label": "In Stock",    "format": "text" }
+                        }
+                    }
+                },
+                "in_stock": {
+                    "title": "In-Stock Products Only",
+                    "transformation": {
+                        "fields": [
+                            "dispensary_slug",
+                            "category",
+                            "product_name",
+                            "brand",
+                            "thc_percentage",
+                            "price",
+                            "weight_grams",
+                            "price_per_gram"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "dispensary_slug":  { "label": "Store",     "format": "text" },
+                            "category":         { "label": "Category",  "format": "text" },
+                            "product_name":     { "label": "Product",   "format": "text" },
+                            "brand":            { "label": "Brand",     "format": "text" },
+                            "thc_percentage":   { "label": "THC %",     "format": "number" },
+                            "price":            { "label": "Price ($)", "format": "number" },
+                            "price_per_gram":   { "label": "$/gram",   "format": "number" }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
