@@ -1,15 +1,8 @@
-# Use Apify's Puppeteer image as base
-FROM apify/actor-node-puppeteer-chrome:18
+FROM apify/actor-python:3.11
 
-# Copy package files
-COPY package*.json ./
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN npm install --omit=dev --omit=optional \
-    && npm cache clean --force
-
-# Copy source code
 COPY . ./
 
-# Run the actor
-CMD npm start
+CMD ["python", "-m", "src.main"]

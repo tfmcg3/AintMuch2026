@@ -1,42 +1,30 @@
-# Dependencies
-node_modules/
-package-lock.json
-
-# Apify storage
-apify_storage/
-storage/
-
-# Build output
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
 dist/
 build/
+.eggs/
 
-# Environment
+.pytest_cache/
+.coverage
+htmlcov/
+
 .env
 .env.local
 .env.*.local
 
-# IDE
+storage/
+
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# OS
-.DS_Store
-Thumbs.db
+dev_journal.log
 
-# Logs
-logs/
 *.log
-npm-debug.log*
-
-# Test coverage
-coverage/
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Output files (generated during runs)
-*.csv
+!README.md

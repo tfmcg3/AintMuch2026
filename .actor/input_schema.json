@@ -1,0 +1,69 @@
+{
+    "title": "Dutchie Dispensary Menu Scraper",
+    "description": "<p>Extract complete product menus from any <a href='https://dutchie.com' target='_blank'>Dutchie.com</a> dispensary in under 60 seconds. Returns clean, structured data: product names, brands, THC/CBD percentages, pricing, weight, and stock status.</p><p><strong>Quick Start:</strong> Paste a Dutchie dispensary URL below and click Run.</p>",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "scrapingMode": {
+            "title": "Scraping Mode",
+            "type": "string",
+            "description": "Select 'Single Store' for a quick 30-second scrape of one dispensary, or 'Bulk Stores' to process multiple URLs in one run.",
+            "editor": "select",
+            "default": "single",
+            "enum": ["single", "bulk"],
+            "enumTitles": [
+                "Single Store — Scrape one dispensary (~30 seconds)",
+                "Bulk Stores — Scrape multiple dispensaries in one run"
+            ],
+            "prefill": "single",
+            "sectionCaption": "Scraping Configuration",
+            "sectionDescription": "Choose how many dispensaries to scrape and paste their Dutchie URLs below."
+        },
+        "startUrls": {
+            "title": "Dispensary URLs",
+            "type": "array",
+            "description": "Enter one or more Dutchie.com dispensary menu URLs. In Single Store mode, only the first URL is used. Example: https://dutchie.com/dispensary/your-store-name",
+            "editor": "requestListSources",
+            "prefill": [
+                { "url": "https://dutchie.com/dispensary/quincy-cannabis-co" }
+            ]
+        },
+        "maxItems": {
+            "title": "Max Products per Store",
+            "type": "integer",
+            "description": "Limit the number of products extracted per dispensary. Set to 0 for unlimited (full menu). Start with 10 to preview results and control costs.",
+            "minimum": 0,
+            "default": 10,
+            "prefill": 10,
+            "editor": "number",
+            "sectionCaption": "Output Controls",
+            "sectionDescription": "Fine-tune how much data is extracted and how it is filtered."
+        },
+        "categoryFilter": {
+            "title": "Category Filter",
+            "type": "string",
+            "description": "Optional: Only extract products from a specific category (e.g., 'Flower', 'Edible', 'Vape', 'Pre-Roll', 'Concentrate'). Leave blank to extract the full menu.",
+            "editor": "textfield",
+            "default": "",
+            "prefill": ""
+        },
+        "useProxy": {
+            "title": "Use Apify Proxy",
+            "type": "boolean",
+            "description": "Enable Apify's proxy service for IP rotation. Recommended if you experience 403 errors or are scraping many stores in bulk mode.",
+            "default": false,
+            "sectionCaption": "Advanced Settings",
+            "sectionDescription": "Proxy and network configuration. Most users can leave these at their defaults."
+        },
+        "proxyGroup": {
+            "title": "Proxy Group",
+            "type": "string",
+            "description": "Which Apify proxy group to use. Residential is recommended for best reliability.",
+            "editor": "select",
+            "default": "RESIDENTIAL",
+            "enum": ["RESIDENTIAL", "DATACENTER"],
+            "enumTitles": ["Residential (Best Reliability)", "Datacenter (Fastest)"]
+        }
+    },
+    "required": ["startUrls"]
+}
