@@ -27,6 +27,7 @@ import csv
 import io
 import json
 import logging
+import math
 import re
 import uuid
 from dataclasses import dataclass, field, asdict
@@ -257,7 +258,8 @@ SHEETS_HEADERS = [
     "size_label", "weight_grams", "weight_oz",
     # Potency / Labs
     "thc_percentage", "cbd_percentage", "tac_percentage",
-    "thc_mg", "cbd_mg", "total_terpenes_percentage",
+    "cbg_percentage", "cbn_percentage",
+    "thc_mg", "cbd_mg", "potency_unit", "total_terpenes_percentage",
     # Terpenes
     "dominant_terpene", "terpene_profile",
     "myrcene_percentage", "limonene_percentage", "caryophyllene_percentage",
@@ -330,9 +332,12 @@ class GoldenProduct:
     # Potency / Labs
     thc_percentage:         Optional[float] = None
     cbd_percentage:         Optional[float] = None
+    potency_unit:           Optional[str] = None
     tac_percentage:         Optional[float] = None
     thc_mg:                 Optional[float] = None
     cbd_mg:                 Optional[float] = None
+    cbg_percentage:         Optional[float] = None
+    cbn_percentage:         Optional[float] = None
     total_terpenes_percentage: Optional[float] = None
 
     # Terpenes
@@ -902,6 +907,7 @@ def parse_cannabinoids(raw: dict, category: str) -> dict:
         "cbd_mg": None,
         "cbg_percentage": None,
         "cbn_percentage": None,
+        "potency_unit": None,
     }
 
     def get_potency_content(key_upper):
@@ -968,6 +974,7 @@ def parse_cannabinoids(raw: dict, category: str) -> dict:
     # mg-based dosing (for edibles, tinctures, topicals, capsules, beverages)
     dose_categories = {"edible", "tincture", "topical", "capsule", "beverage"}
     if category.lower() in dose_categories:
+        result["potency_unit"] = "Milligrams"
         # THC mg
         thc_mg_val = (
             raw.get("thcMg") or raw.get("thc_mg")
@@ -1000,6 +1007,9 @@ def parse_cannabinoids(raw: dict, category: str) -> dict:
                     cbd_mg_val = entry.get("value")
                     break
         result["cbd_mg"] = _safe_float(cbd_mg_val)
+    else:
+        if result["thc_percentage"] is not None or result["cbd_percentage"] is not None:
+            result["potency_unit"] = "Percentage"
 
     return result
 
@@ -1281,6 +1291,9 @@ class GoldenSchemaPipeline:
             product_name_raw = str(
                 raw.get("Name") or raw.get("name") or raw.get("productName") or ""
             ).strip()
+            
+            # Strip potency data embedded in names (e.g. "Sour Diesel *34.61% TAC 3.46% TERP*")
+            product_name_raw = re.sub(r'\s*\*[^*]+\*\s*', ' ', product_name_raw).strip()
 
             # Validation gate: skip records with no name AND no ID
             if not product_name_raw and not product_id:
@@ -1432,8 +1445,11 @@ class GoldenSchemaPipeline:
                 thc_percentage=cann["thc_percentage"],
                 cbd_percentage=cann["cbd_percentage"],
                 tac_percentage=cann["tac_percentage"],
+                cbg_percentage=cann["cbg_percentage"],
+                cbn_percentage=cann["cbn_percentage"],
                 thc_mg=cann["thc_mg"],
                 cbd_mg=cann["cbd_mg"],
+                potency_unit=cann.get("potency_unit"),
                 total_terpenes_percentage=terp["total_terpenes_percentage"],
                 # Terpenes
                 dominant_terpene=terp["dominant_terpene"],

@@ -930,7 +930,6 @@ async def _process_input(actor_input: dict):
                 f"[{slug}] Pipeline stats: "
                 f"{stats['raw_count']} raw → "
                 f"{stats['clean_count']} clean | "
-                f"{stats['fingerprint_dupes']} fp-dupes | "
                 f"{stats['id_dupes']} id-dupes | "
                 f"{stats['invalid_skipped']} skipped"
             )
